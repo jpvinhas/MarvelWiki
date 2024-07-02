@@ -22,9 +22,9 @@ struct Character: Identifiable, Codable {
         var ext: String
         
         
-        enum Code: String {
+        enum CodingKeys: String, CodingKey {
             case path
-            case variantname
+            case variantName
             case ext = "extension"
         }
         
