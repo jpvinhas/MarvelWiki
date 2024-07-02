@@ -199,6 +199,7 @@
 		81A7F1322C32F35600211625 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2181D1E12C34227900F821FA /* MarvelWikiSearchBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -329,6 +330,7 @@
 				815DE9CC2C341A5A00690031 /* Routes.swift in Sources */,
 				81A7F1412C32F35600211625 /* ContentView.swift in Sources */,
 				81A7F13F2C32F35600211625 /* Character.swift in Sources */,
+				2181D1E22C34227900F821FA /* MarvelWikiSearchBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
