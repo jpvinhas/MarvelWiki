@@ -25,7 +25,7 @@ struct MarvelWikiSearchBar: View {
                         .foregroundColor(.mGray)
                         .padding(.leading, 20)
                 Button(action: {
-                    print("pesquisa")
+                    print("pesquisarr")
                 }, label: {
                     Image(systemName: "magnifyingglass")
                         .foregroundColor(Color("mGray"))
