@@ -11,11 +11,16 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack{
-                Text("Home")
+                MarvelWikiSearchBar()
+                Spacer()
                 NavigationLink(destination: DescriptionView(), label: {
                     Text("Open Description")
                 })
+                
+                Spacer()
             }
+            .frame(maxWidth: .infinity)
+            .background(Color("mBackground"))
         }
     }
 }
