@@ -18,7 +18,20 @@ struct Character: Identifiable, Codable {
 
     struct Thumbnail: Codable {
         var path: String
+        var variantName = "portrait_medium"
+        var ext: String
+        
+        
+        enum Code: String {
+            case path
+            case variantname
+            case ext = "extension"
+        }
+        
+        
+    
     }
+    
 
     struct Comics: Codable {
         var available: Int
