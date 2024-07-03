@@ -35,4 +35,14 @@ class ComicsViewModel: ObservableObject {
             }
         }
     }
+    
+    func formatTitle(title: String) -> String {
+        let components = title.components(separatedBy: " (")
+
+        let formatedtitle = components[0].trimmingCharacters(in: .whitespaces)
+
+        let year = components[1].components(separatedBy: ")")[0]
+        
+        return formatedtitle
+    }
 }

@@ -23,8 +23,6 @@ class ApiServiceComic{
         let url = URL(string: urlString)
         guard let url = url else {return}
         
-        print(url)
-        
         var requestHeader = URLRequest(url: url)
         requestHeader.httpMethod = "GET"
       
