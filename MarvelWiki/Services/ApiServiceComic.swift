@@ -17,5 +17,21 @@ class ApiServiceComic{
     private let baseURL: String = "https://gateway.marvel.com:443"
     private let urlComics: String = "/v1/public/comics"
     
-    
+    func getComics( completion: @escaping (_ data: Data) -> Void){
+          
+        let urlString = "\(baseURL)\(urlComics)?ts=\(timesTamp)&apikey=\(apikey)&hash=\(hash)"
+        let url = URL(string: urlString)
+        guard let url = url else {return}
+        
+        print(url)
+        
+        var requestHeader = URLRequest(url: url)
+        requestHeader.httpMethod = "GET"
+      
+        URLSession.shared.dataTask(with: requestHeader) { data, _, _ in
+          if let data = data {
+              completion(data)
+          }
+        }.resume()
+  }
 }

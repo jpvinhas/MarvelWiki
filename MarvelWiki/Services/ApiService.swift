@@ -7,8 +7,7 @@
 
 import Foundation
 
-
-class ApiService{
+class ApiService {
     
     static var singleton = ApiService()
     private let headerTest = HeaderHome.init(componentType: "1", primaryLinks: [])
