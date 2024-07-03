@@ -11,7 +11,7 @@ import SwiftUI
 struct MarvelWikiApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Routes()
         }
     }
 }
