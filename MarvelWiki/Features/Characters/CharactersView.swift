@@ -9,9 +9,16 @@ import SwiftUI
 
 struct CharactersView: View {
     var body: some View {
-        Text("CharactersView")
-            .foregroundStyle(Color("mClearGray"))
-
+        NavigationView {
+            VStack{
+                MarvelWikiSearchBar()
+                Spacer()
+               
+                //            Text("CharactersView")
+                //                .foregroundStyle(Color("mClearGray"))
+                //
+            }
+        }
     }
 }
 
