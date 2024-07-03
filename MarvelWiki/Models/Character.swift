@@ -46,3 +46,20 @@ struct Character: Identifiable, Codable {
         var url: String
     }
 }
+struct MarvelResponse: Codable {
+    let code: Int
+    let status: String
+    let copyright: String
+    let attributionText: String
+    let attributionHTML: String
+    let etag: String
+    let data: MarvelData
+}
+
+struct MarvelData: Codable {
+    let offset: Int
+    let limit: Int
+    let total: Int
+    let count: Int
+    let results: [Character]
+}
