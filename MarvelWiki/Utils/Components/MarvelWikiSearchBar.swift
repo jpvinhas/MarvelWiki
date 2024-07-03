@@ -18,7 +18,7 @@ struct MarvelWikiSearchBar: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 230, height: 62)
-                           
+                                          
             HStack{
                 TextField("", text: $searchText, prompt: Text("Busque").foregroundColor(.mGray))
                         .autocapitalization(.none)

@@ -12,12 +12,15 @@ struct CharactersView: View {
         NavigationView {
             VStack{
                 MarvelWikiSearchBar()
+                    .padding(.top,0)
                 Spacer()
+                
                
-                //            Text("CharactersView")
-                //                .foregroundStyle(Color("mClearGray"))
-                //
+               
             }
+            
+            .frame(maxWidth: .infinity)
+            .background(Color("mBackground"))
         }
     }
 }
