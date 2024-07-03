@@ -16,6 +16,13 @@
 		7F165BD92C3426050063A197 /* HeaderHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F165BD82C3426050063A197 /* HeaderHome.swift */; };
 		7F165BDB2C3427170063A197 /* PrimaryLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F165BDA2C3427170063A197 /* PrimaryLink.swift */; };
 		7F40A3C82C33005000334860 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F40A3C72C33005000334860 /* ApiService.swift */; };
+		815DE9C22C34198500690031 /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815DE9C12C34198500690031 /* CharactersView.swift */; };
+		815DE9C42C34199500690031 /* ComicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815DE9C32C34199500690031 /* ComicsView.swift */; };
+		815DE9C62C3419AA00690031 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815DE9C52C3419AA00690031 /* DescriptionView.swift */; };
+		815DE9C82C3419B700690031 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815DE9C72C3419B700690031 /* HomeView.swift */; };
+		815DE9CA2C3419C800690031 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815DE9C92C3419C800690031 /* SearchView.swift */; };
+		815DE9CC2C341A5A00690031 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815DE9CB2C341A5A00690031 /* Routes.swift */; };
+		815DE9D02C3425FA00690031 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815DE9CF2C3425FA00690031 /* TabBarView.swift */; };
 		81A7F1382C32F35600211625 /* MarvelWikiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A7F11A2C32F35600211625 /* MarvelWikiApp.swift */; };
 		81A7F1392C32F35600211625 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81A7F11C2C32F35600211625 /* Poppins-Bold.ttf */; };
 		81A7F13A2C32F35600211625 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81A7F11D2C32F35600211625 /* Poppins-Light.ttf */; };
@@ -26,6 +33,7 @@
 		81A7F13F2C32F35600211625 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A7F12C2C32F35600211625 /* Character.swift */; };
 		81A7F1402C32F35600211625 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A7F12D2C32F35600211625 /* Comic.swift */; };
 		81A7F1412C32F35600211625 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A7F12F2C32F35600211625 /* ContentView.swift */; };
+		81F911E72C34478900F6C47D /* MarvelWikiSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F911E62C34478900F6C47D /* MarvelWikiSearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +46,13 @@
 		7F165BD82C3426050063A197 /* HeaderHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderHome.swift; sourceTree = "<group>"; };
 		7F165BDA2C3427170063A197 /* PrimaryLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryLink.swift; sourceTree = "<group>"; };
 		7F40A3C72C33005000334860 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		815DE9C12C34198500690031 /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
+		815DE9C32C34199500690031 /* ComicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsView.swift; sourceTree = "<group>"; };
+		815DE9C52C3419AA00690031 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		815DE9C72C3419B700690031 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		815DE9C92C3419C800690031 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		815DE9CB2C341A5A00690031 /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
+		815DE9CF2C3425FA00690031 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		81A7F0DF2C32F25700211625 /* MarvelWiki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelWiki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81A7F11A2C32F35600211625 /* MarvelWikiApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelWikiApp.swift; sourceTree = "<group>"; };
 		81A7F11C2C32F35600211625 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
@@ -50,6 +65,7 @@
 		81A7F12D2C32F35600211625 /* Comic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
 		81A7F12F2C32F35600211625 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		81A7F1432C32F54100211625 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		81F911E62C34478900F6C47D /* MarvelWikiSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelWikiSearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +148,7 @@
 		81A7F1252C32F35600211625 /* Characters */ = {
 			isa = PBXGroup;
 			children = (
+				815DE9C12C34198500690031 /* CharactersView.swift */,
 			);
 			path = Characters;
 			sourceTree = "<group>";
@@ -139,6 +156,7 @@
 		81A7F1262C32F35600211625 /* Comics */ = {
 			isa = PBXGroup;
 			children = (
+				815DE9C32C34199500690031 /* ComicsView.swift */,
 			);
 			path = Comics;
 			sourceTree = "<group>";
@@ -146,6 +164,7 @@
 		81A7F1272C32F35600211625 /* Description */ = {
 			isa = PBXGroup;
 			children = (
+				815DE9C52C3419AA00690031 /* DescriptionView.swift */,
 			);
 			path = Description;
 			sourceTree = "<group>";
@@ -161,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				81A7F1282C32F35600211625 /* Components */,
+				815DE9C72C3419B700690031 /* HomeView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -168,6 +188,7 @@
 		81A7F12A2C32F35600211625 /* SearchScreen */ = {
 			isa = PBXGroup;
 			children = (
+				815DE9C92C3419C800690031 /* SearchView.swift */,
 			);
 			path = SearchScreen;
 			sourceTree = "<group>";
@@ -215,6 +236,7 @@
 		81A7F1322C32F35600211625 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				81F911E62C34478900F6C47D /* MarvelWikiSearchBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -222,6 +244,7 @@
 		81A7F1332C32F35600211625 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				815DE9CB2C341A5A00690031 /* Routes.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -229,6 +252,7 @@
 		81A7F1342C32F35600211625 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				815DE9CF2C3425FA00690031 /* TabBarView.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -343,6 +367,16 @@
 				7F165BCE2C341D590063A197 /* CardComicHome.swift in Sources */,
 				7F165BD02C3420010063A197 /* ImageCardComicHome.swift in Sources */,
 				7F165BCC2C3416520063A197 /* ApiServiceComic.swift in Sources */,
+				815DE9C42C34199500690031 /* ComicsView.swift in Sources */,
+				815DE9D02C3425FA00690031 /* TabBarView.swift in Sources */,
+				815DE9CA2C3419C800690031 /* SearchView.swift in Sources */,
+				815DE9C62C3419AA00690031 /* DescriptionView.swift in Sources */,
+				81A7F1382C32F35600211625 /* MarvelWikiApp.swift in Sources */,
+				815DE9C22C34198500690031 /* CharactersView.swift in Sources */,
+				81F911E72C34478900F6C47D /* MarvelWikiSearchBar.swift in Sources */,
+				81A7F1402C32F35600211625 /* Comic.swift in Sources */,
+				815DE9C82C3419B700690031 /* HomeView.swift in Sources */,
+				815DE9CC2C341A5A00690031 /* Routes.swift in Sources */,
 				81A7F1412C32F35600211625 /* ContentView.swift in Sources */,
 				81A7F13F2C32F35600211625 /* Character.swift in Sources */,
 			);
