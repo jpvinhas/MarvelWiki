@@ -17,7 +17,7 @@ struct ContentView: View {
                 .font(.custom("BentonSans Comp Black", size: 30))
             
         }.onAppear(perform: {
-            ApiServiceCharacter.singleton.getCharacters { responseCharacter in
+            ApiServiceCharacter.singleton.getCharacterId(characterId: 1011334) { responseCharacter in
                 DispatchQueue.main.async {
                     print(responseCharacter as Any)
                 }

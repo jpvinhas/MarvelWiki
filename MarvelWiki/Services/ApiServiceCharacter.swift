@@ -28,7 +28,6 @@ class ApiServiceCharacter {
         URLSession.shared.dataTask(with: url){ (data, response, error) in
             guard let data = data else {return}
             let jsonDecoder = JSONDecoder()
-            print(data)
             let charactersResponse = try? jsonDecoder.decode(MarvelResponse.self, from: data)
             completion(charactersResponse?.data.results)
         }
@@ -37,6 +36,25 @@ class ApiServiceCharacter {
         }
         
     
+    func getCharacterId (characterId: Int, completion: @escaping  (_ characterIdResponse: Character?) -> Void){
+        let queryTs = URLQueryItem(name: "ts", value: timesTamp)
+        let queryApikey = URLQueryItem(name: "apikey", value: apikey)
+        let queryHash = URLQueryItem(name: "hash", value: hash)
+        
+        let characterURLString = "\(baseURL)/\(characterId)"
+        
+        var url = URL(string: characterURLString)
+        url?.append(queryItems: [queryTs, queryApikey, queryHash])
+        guard let url = url else {return}
+         
+        URLSession.shared.dataTask(with: url){ (data, response, error) in
+            guard let data = data else {return}
+            let characterResponse = try? JSONDecoder().decode(MarvelResponse.self, from: data)
+            completion(characterResponse?.data.results.first)
+                
+        }
+        .resume()
+    }
     
     
         
