@@ -21,7 +21,8 @@ struct Routes: View {
             case .Characters:
                 CharactersView()
             case .Favorite:
-                HomeView()
+                Text("FavoriteView")
+                    .foregroundStyle(Color("mClearGray"))
             }
             Spacer()
             TabBarView(selectedTab: $selectedTab)
