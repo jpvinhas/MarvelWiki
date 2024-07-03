@@ -18,15 +18,6 @@ struct Character: Identifiable, Codable {
 
     struct Thumbnail: Codable {
         var path: String
-        var sizeImage = "portrait_medium"
-        var ext: String
-        
-        
-        enum CodingKeys: String, CodingKey {
-            case path
-            case sizeImage
-            case ext = "extension"
-        }
     }
     
     struct Comics: Codable {
