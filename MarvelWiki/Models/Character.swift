@@ -27,12 +27,8 @@ struct Character: Identifiable, Codable {
             case sizeImage
             case ext = "extension"
         }
-        
-        
-    
     }
     
-
     struct Comics: Codable {
         var available: Int
         var collectionURI: String
