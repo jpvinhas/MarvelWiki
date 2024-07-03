@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct ComicsHome: Codable{
+    var link: String
+    var title: String
+    var content: [CardComicHome]
+}

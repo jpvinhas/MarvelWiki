@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F165BCA2C3416370063A197 /* ApiServiceCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F165BC92C3416370063A197 /* ApiServiceCharacter.swift */; };
+		7F165BCC2C3416520063A197 /* ApiServiceComic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F165BCB2C3416520063A197 /* ApiServiceComic.swift */; };
+		7F165BCE2C341D590063A197 /* CardComicHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F165BCD2C341D590063A197 /* CardComicHome.swift */; };
+		7F165BD02C3420010063A197 /* ImageCardComicHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F165BCF2C3420010063A197 /* ImageCardComicHome.swift */; };
+		7F165BD32C3421880063A197 /* LinkCardHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F165BD22C3421880063A197 /* LinkCardHome.swift */; };
+		7F165BD72C3424EA0063A197 /* ResponseHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F165BD62C3424EA0063A197 /* ResponseHome.swift */; };
+		7F165BD92C3426050063A197 /* HeaderHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F165BD82C3426050063A197 /* HeaderHome.swift */; };
+		7F165BDB2C3427170063A197 /* PrimaryLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F165BDA2C3427170063A197 /* PrimaryLink.swift */; };
+		7F40A3C82C33005000334860 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F40A3C72C33005000334860 /* ApiService.swift */; };
 		81A7F1382C32F35600211625 /* MarvelWikiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A7F11A2C32F35600211625 /* MarvelWikiApp.swift */; };
 		81A7F1392C32F35600211625 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81A7F11C2C32F35600211625 /* Poppins-Bold.ttf */; };
 		81A7F13A2C32F35600211625 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81A7F11D2C32F35600211625 /* Poppins-Light.ttf */; };
@@ -20,6 +29,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F165BC92C3416370063A197 /* ApiServiceCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServiceCharacter.swift; sourceTree = "<group>"; };
+		7F165BCB2C3416520063A197 /* ApiServiceComic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServiceComic.swift; sourceTree = "<group>"; };
+		7F165BCD2C341D590063A197 /* CardComicHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardComicHome.swift; sourceTree = "<group>"; };
+		7F165BCF2C3420010063A197 /* ImageCardComicHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCardComicHome.swift; sourceTree = "<group>"; };
+		7F165BD22C3421880063A197 /* LinkCardHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkCardHome.swift; sourceTree = "<group>"; };
+		7F165BD62C3424EA0063A197 /* ResponseHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseHome.swift; sourceTree = "<group>"; };
+		7F165BD82C3426050063A197 /* HeaderHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderHome.swift; sourceTree = "<group>"; };
+		7F165BDA2C3427170063A197 /* PrimaryLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryLink.swift; sourceTree = "<group>"; };
+		7F40A3C72C33005000334860 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		81A7F0DF2C32F25700211625 /* MarvelWiki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelWiki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81A7F11A2C32F35600211625 /* MarvelWikiApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelWikiApp.swift; sourceTree = "<group>"; };
 		81A7F11C2C32F35600211625 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
@@ -45,6 +63,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F165BD12C3420D40063A197 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7F165BCF2C3420010063A197 /* ImageCardComicHome.swift */,
+				7F165BCD2C341D590063A197 /* CardComicHome.swift */,
+				7F165BD22C3421880063A197 /* LinkCardHome.swift */,
+				7F165BD62C3424EA0063A197 /* ResponseHome.swift */,
+				7F165BD82C3426050063A197 /* HeaderHome.swift */,
+				7F165BDA2C3427170063A197 /* PrimaryLink.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		81A7F0D62C32F25700211625 = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +187,7 @@
 		81A7F12E2C32F35600211625 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7F165BD12C3420D40063A197 /* Home */,
 				81A7F12C2C32F35600211625 /* Character.swift */,
 				81A7F12D2C32F35600211625 /* Comic.swift */,
 			);
@@ -173,6 +205,9 @@
 		81A7F1312C32F35600211625 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				7F40A3C72C33005000334860 /* ApiService.swift */,
+				7F165BC92C3416370063A197 /* ApiServiceCharacter.swift */,
+				7F165BCB2C3416520063A197 /* ApiServiceComic.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -297,8 +332,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F165BD32C3421880063A197 /* LinkCardHome.swift in Sources */,
+				7F165BD72C3424EA0063A197 /* ResponseHome.swift in Sources */,
 				81A7F1382C32F35600211625 /* MarvelWikiApp.swift in Sources */,
+				7F40A3C82C33005000334860 /* ApiService.swift in Sources */,
+				7F165BD92C3426050063A197 /* HeaderHome.swift in Sources */,
+				7F165BCA2C3416370063A197 /* ApiServiceCharacter.swift in Sources */,
 				81A7F1402C32F35600211625 /* Comic.swift in Sources */,
+				7F165BDB2C3427170063A197 /* PrimaryLink.swift in Sources */,
+				7F165BCE2C341D590063A197 /* CardComicHome.swift in Sources */,
+				7F165BD02C3420010063A197 /* ImageCardComicHome.swift in Sources */,
+				7F165BCC2C3416520063A197 /* ApiServiceComic.swift in Sources */,
 				81A7F1412C32F35600211625 /* ContentView.swift in Sources */,
 				81A7F13F2C32F35600211625 /* Character.swift in Sources */,
 			);
