@@ -24,7 +24,10 @@ struct ComicsView: View {
         VStack {
             MarvelWikiSearchBar()
                 .padding(.top,0)
-            ComicsList(comicsViewModel: comicsViewModel)
+            CarroselView()
+                .padding(.top)
+           ComicsList(comicsViewModel: comicsViewModel)
+            //HComicList(comicsViewModel: comicsViewModel)
         }
     }
 }

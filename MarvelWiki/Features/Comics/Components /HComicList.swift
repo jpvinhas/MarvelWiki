@@ -1,33 +1,34 @@
 //
-//  ComicsList.swift
+//  HComicList.swift
 //  MarvelWiki
 //
-//  Created by João Pedro Borges on 03/07/24.
+//  Created by João Pedro Borges on 04/07/24.
 //
 
 import SwiftUI
 
-struct ComicsList: View {
-    
-    private let columns: [GridItem] = [
+struct HComicList: View {
+    private let rows: [GridItem] = [
         GridItem(.flexible(), spacing: 36),
-        GridItem(.flexible(), spacing: 36),
-        GridItem(.flexible(), spacing: 36)
     ]
     
     @ObservedObject var comicsViewModel: ComicsViewModel
     
     var body: some View {
         VStack(alignment: .leading){
-            Text("Comics")
-                .font(.custom("BentonSans Comp Black", size: 26))
-                .foregroundStyle(Color.white)
-                .padding(.leading,24)
+            HStack{
+                Text("Comics")
+                    .font(.custom("BentonSans Comp Black", size: 26))
+                    .foregroundStyle(Color.white)
+                    .padding(.leading,24)
+                Button(action: {print("see all")}, label: {Text("See All")})
+            }
             if comicsViewModel.comics != nil {
-                ScrollView(.vertical, showsIndicators: false) {
-                    LazyVGrid(columns: columns, spacing: 20) {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHGrid(rows: rows, alignment: .center) {
                         ForEach(comicsViewModel.comics ?? []) { comic in
                             ComicBox(comic: comic)
+                                .frame(height: 200)
                         }
                     }
                     .padding(.top,5)
