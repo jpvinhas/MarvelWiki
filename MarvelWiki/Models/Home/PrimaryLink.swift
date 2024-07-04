@@ -8,12 +8,13 @@
 import Foundation
 
 
-struct PrimaryLink: Codable{
+struct PrimaryLink: Identifiable, Codable{
+    var id = UUID()
     var link: String
     var title: String
-    var content: [CardComicHome]
+    var content: [CardHome]
     
-    init(link: String, title: String, content: [CardComicHome]){
+    init(link: String, title: String, content: [CardHome]){
         self.link = link
         self.title = title
         self.content = content
@@ -23,7 +24,7 @@ struct PrimaryLink: Codable{
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.link = try container.decode(String.self, forKey: .link)
         self.title = try container.decode(String.self, forKey: .title)
-        self.content = try container.decode([CardComicHome].self, forKey: .content)
+        self.content = try container.decode([CardHome].self, forKey: .content)
     }
     
     enum CodingKeys: String, CodingKey{

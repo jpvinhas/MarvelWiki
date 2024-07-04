@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct ImageCardComicHome: Codable{
+struct ImageCardComicHome: Identifiable, Codable{
+    var id = UUID()
     var filename: String
     var alt: String
     
