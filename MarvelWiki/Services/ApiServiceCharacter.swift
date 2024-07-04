@@ -57,6 +57,29 @@ class ApiServiceCharacter {
     }
     
     
+    func fecthCharacter (characterName: String, completion: @escaping (_ nameStartsWithResponse: [Character]?) -> Void){
+        let queryTs = URLQueryItem(name: "ts", value: timesTamp)
+        let queryApikey = URLQueryItem(name: "apikey", value: apikey)
+        let queryHash = URLQueryItem(name: "hash", value: hash)
+        let querynameStartsWith = URLQueryItem(name: "nameStartsWith", value: characterName)
+        let characterNameURLString = "\(baseURL)"
+       
+        
+        var url = URL(string: characterNameURLString)
+        url?.append(queryItems: [queryTs, queryApikey,queryHash, querynameStartsWith])
+        guard let url = url else {return}
+        
+        URLSession.shared.dataTask(with: url){ (data, response, error) in
+            guard let data = data else {return}
+            print(data)
+            let characterNameResponse = try? JSONDecoder().decode(MarvelResponse.self, from: data)
+            completion(characterNameResponse?.data.results)
+            
+        }
+        .resume()
+          
+    }
+    
         
     
 }
