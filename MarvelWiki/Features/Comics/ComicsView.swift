@@ -15,7 +15,7 @@ struct ComicsView: View {
         GridItem(.flexible(), spacing: 36)
     ]
     
-    @StateObject var comicsViewModel = ComicsViewModel()
+    @EnvironmentObject var comicsViewModel: ComicsViewModel
     
     var ext = "jpg"
     var size = "portrait_medium"
@@ -26,11 +26,13 @@ struct ComicsView: View {
                 .padding(.top,0)
             CarroselView()
                 .padding(.top)
-           ComicsList(comicsViewModel: comicsViewModel)
+           ComicsList()
         }
     }
 }
 
 #Preview {
     ComicsView()
+        .environmentObject(ComicsViewModel())
+        .background(Color("mBackground"))
 }

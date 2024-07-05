@@ -15,8 +15,8 @@ struct ComicsList: View {
         GridItem(.flexible(), spacing: 36)
     ]
     
-    @ObservedObject var comicsViewModel: ComicsViewModel
-    
+    @EnvironmentObject var comicsViewModel: ComicsViewModel
+
     var body: some View {
         VStack(alignment: .leading){
             Text("Comics")
