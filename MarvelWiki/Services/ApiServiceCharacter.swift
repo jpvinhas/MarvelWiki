@@ -68,7 +68,7 @@ class ApiServiceCharacter {
     }
     
     
-    func fecthCharacter (characterName: String, completion: @escaping (_ nameStartsWithResponse: [Character]?) -> Void){
+    func fecthCharacterName (characterName: String, completion: @escaping (_ nameStartsWithResponse: [Character]?) -> Void){
         let queryTs = URLQueryItem(name: "ts", value: timesTamp)
         let queryApikey = URLQueryItem(name: "apikey", value: apikey)
         let queryHash = URLQueryItem(name: "hash", value: hash)
