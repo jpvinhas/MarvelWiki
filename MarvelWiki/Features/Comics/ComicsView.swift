@@ -9,24 +9,20 @@ import SwiftUI
 
 struct ComicsView: View {
     
-    private let columns: [GridItem] = [
-        GridItem(.flexible(), spacing: 36),
-        GridItem(.flexible(), spacing: 36),
-        GridItem(.flexible(), spacing: 36)
-    ]
-    
     @EnvironmentObject var comicsViewModel: ComicsViewModel
-    
-    var ext = "jpg"
-    var size = "portrait_medium"
     
     var body: some View {
         VStack {
-            MarvelWikiSearchBar()
+            MarvelWikiSearchBar(searchText: $comicsViewModel.searchText, isSearching: $comicsViewModel.isSearchingComic, search: $comicsViewModel.search)
                 .padding(.top,0)
-            CarroselView()
-                .padding(.top)
-           ComicsList()
+            if comicsViewModel.isSearchingComic {
+                SearchList()
+                Spacer()
+            }else{
+                CarroselView()
+                    .padding(.top)
+                ComicsList()
+            }
         }
     }
 }

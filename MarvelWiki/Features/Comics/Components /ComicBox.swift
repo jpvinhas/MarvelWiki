@@ -33,6 +33,8 @@ struct ComicBox: View {
             Text("\( formatTitle(title: comic.title ?? ""))")
                 .font(.custom("BentonSans Comp Black", size: 14))
                 .foregroundStyle(Color.white)
+                .lineLimit(1)
+                .truncationMode(.tail)
         }
     }
     func formatTitle(title: String) -> String {

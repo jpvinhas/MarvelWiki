@@ -9,15 +9,34 @@ import SwiftUI
 
 
 struct MarvelWikiSearchBar: View {
-    @State private var searchText = ""
-    
+    @Binding var searchText: String
+    @Binding var isSearching: Bool
+    @Binding var search: Bool
+
     var body: some View {
         
         VStack{
-            Image("MWhorizontal")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 230, height: 62)
+            HStack{
+                if isSearching {
+                    Button {
+                        isSearching.toggle()
+                        searchText = ""
+                    } label: {
+                        Image(systemName: "arrow.backward")
+                            .font(.system(size: 20).bold())
+                            .foregroundColor(Color("mClearGray"))
+                    }.frame(height: 62)
+                        .padding(.trailing,30)
+                        .padding(.leading,20)
+                }else{
+                    Spacer()
+                }
+                Image("MWhorizontal")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 230, height: 62)
+                Spacer()
+            }
                            
             HStack{
                 TextField("", text: $searchText, prompt: Text("Busque").foregroundColor(.mGray))
@@ -25,7 +44,11 @@ struct MarvelWikiSearchBar: View {
                         .foregroundColor(.mGray)
                         .padding(.leading, 20)
                 Button(action: {
-                    print("pesquisarr")
+                    if isSearching {
+                        search.toggle()
+                    }else {
+                        isSearching.toggle()
+                    }
                 }, label: {
                     Image(systemName: "magnifyingglass")
                         .foregroundColor(Color("mGray"))
@@ -39,8 +62,4 @@ struct MarvelWikiSearchBar: View {
         }
         
     }
-}
-
-#Preview {
-    MarvelWikiSearchBar()
 }

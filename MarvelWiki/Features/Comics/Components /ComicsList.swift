@@ -9,12 +9,6 @@ import SwiftUI
 
 struct ComicsList: View {
     
-    private let columns: [GridItem] = [
-        GridItem(.flexible(), spacing: 36),
-        GridItem(.flexible(), spacing: 36),
-        GridItem(.flexible(), spacing: 36)
-    ]
-    
     @EnvironmentObject var comicsViewModel: ComicsViewModel
 
     var body: some View {
@@ -25,7 +19,7 @@ struct ComicsList: View {
                 .padding(.leading,24)
             if comicsViewModel.comics != nil {
                 ScrollView(.vertical, showsIndicators: false) {
-                    LazyVGrid(columns: columns, spacing: 20) {
+                    LazyVGrid(columns: comicsViewModel.columns, spacing: 20) {
                         ForEach(comicsViewModel.comics ?? []) { comic in
                             ComicBox(comic: comic)
                         }

@@ -34,9 +34,9 @@ class ApiServiceComic{
           }
         }.resume()
     }
-    func getNewComics( completion: @escaping (_ data: Data) -> Void){
+    func getComicsByName(tileStartsWith: String, completion: @escaping (_ data: Data) -> Void){
           
-        let urlString = "\(baseURL)\(urlComics)?ts=\(timesTamp)&apikey=\(apikey)&hash=\(hash)"
+        let urlString = "\(baseURL)\(urlComics)?titleStartsWith=\(tileStartsWith)&ts=\(timesTamp)&apikey=\(apikey)&hash=\(hash)"
         let url = URL(string: urlString)
         guard let url = url else {return}
         
