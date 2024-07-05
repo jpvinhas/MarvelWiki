@@ -14,48 +14,14 @@ struct ContentView: View {
         
         NavigationView{
             
-           
-            VStack {
-                
-                if !homeViewModel.primaryLinks.isEmpty{
-                    ForEach(homeViewModel.primaryLinks){ primaryLink in
-                       
-                        if primaryLink.title == "Comics"{
-                            Text("Latest " + primaryLink.title)
-                                .font(.custom("BentonSans Comp Black", size: 24))
-                                .padding(.leading,25)
-                                List(primaryLink.content){ card in
-                                    if let url = URL(string: card.image.filename) {
-                                        AsyncImage(url: url){ image in
-                                            image
-                                                .image?.resizable()
-                                                .scaledToFit()
-                                                .frame(width: 100)
-                                                .cornerRadius(5.0)
-                                        }
-                                    }else{
-                                        ProgressView("Loading...")
-                                            .navigationTitle("Loading")
-                                    }
-                                    Text(card.headline)
-                                        .font(.custom("BentonSans Comp Black", size: 14))
-                                        .frame(width: 100)
-                                        
-                                }
-                        }
-                    }
-                }else{
-                    ProgressView("Loading...")
-                        .navigationTitle("Loading")
+        }.onAppear(perform: {
+            ApiServiceCharacter.singleton.getCharacters () { responseCharacter in
+                DispatchQueue.main.async {
+                    print(responseCharacter as Any)
                 }
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-                Text("Hello, world 5!")
-                    .font(.custom("BentonSans Comp Black", size: 30))
                 
             }
-        }
+        })
         .padding()
     }
     

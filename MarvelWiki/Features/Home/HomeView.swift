@@ -16,29 +16,31 @@ struct HomeView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView{
-                VStack{
-                    if !homeViewModel.primaryLinks.isEmpty{
-                        ForEach(homeViewModel.primaryLinks){ primaryLink in
-                            if primaryLink.title == "News"{
-                                CarouselHome(primaryLink: primaryLink)
+            VStack{
+                MarvelWikiSearchBar()
+                ScrollView{
+                    VStack{
+                        if !homeViewModel.primaryLinks.isEmpty{
+                            ForEach(homeViewModel.primaryLinks){ primaryLink in
+                                if primaryLink.title == "News"{
+                                    CarouselHome(primaryLink: primaryLink)
+                                }
+                                if primaryLink.title == "Comics"{
+                                    CarouselElementsHome(primaryLink: primaryLink, withBaseUrl: false, withTitles: false)
+                                }
+                                if primaryLink.title == "Characters"{
+                                    CarouselElementsHome(primaryLink: primaryLink, withBaseUrl: true, withTitles: true)
+                                }
                             }
-                            if primaryLink.title == "Comics"{
-                                CarouselElementsHome(primaryLink: primaryLink, withBaseUrl: false, withTitles: false)
-                            }
-                            if primaryLink.title == "Characters"{
-                                CarouselElementsHome(primaryLink: primaryLink, withBaseUrl: true, withTitles: true)
-                            }
+                            
                         }
-                        
-                    }
-                    else{
-                        ProgressView("Loading...")
-                            .navigationTitle("Loading")
+                        else{
+                            ProgressView("Loading...")
+                                .navigationTitle("Loading")
+                        }
                     }
                 }
-            }.background(Color("tabBlue"))
-            
+            }.background(Color("mBackground"))
         }
     }
     

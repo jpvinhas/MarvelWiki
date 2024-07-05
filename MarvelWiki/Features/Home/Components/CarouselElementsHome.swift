@@ -25,7 +25,8 @@ struct CarouselElementsHome: View {
         VStack{
             Text(primaryLink.title)
                 .font(.custom("BentonSans Comp Black", size: 24))
-                .padding(.top)
+                .padding(.top, 15)
+                .padding(.bottom, -10)
                 .foregroundStyle(Color(.white))
             ScrollView(.horizontal, showsIndicators: false){
                 LazyHStack(spacing: 0){
@@ -48,11 +49,6 @@ struct CarouselElementsHome: View {
                                         } placeholder: {
                                             ProgressView()
                                         }
-                                    }else{
-                                        
-                                        ProgressView("Loading...")
-                                            .navigationTitle("Loading")
-                                        
                                     }
                                     
                                     Text(withTitles ? card.headline : "")

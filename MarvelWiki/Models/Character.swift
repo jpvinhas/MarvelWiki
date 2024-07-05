@@ -18,6 +18,7 @@ struct Character: Identifiable, Codable {
 
     struct Thumbnail: Codable {
         var path: String
+               
     }
     
     struct Comics: Codable {

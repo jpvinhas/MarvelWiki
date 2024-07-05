@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2130D1562C36D2F30039D662 /* CharactersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2130D1552C36D2F30039D662 /* CharactersViewModel.swift */; };
 		7F165BCA2C3416370063A197 /* ApiServiceCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F165BC92C3416370063A197 /* ApiServiceCharacter.swift */; };
 		7F165BCC2C3416520063A197 /* ApiServiceComic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F165BCB2C3416520063A197 /* ApiServiceComic.swift */; };
 		7F165BCE2C341D590063A197 /* CardComicHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F165BCD2C341D590063A197 /* CardComicHome.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2130D1552C36D2F30039D662 /* CharactersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModel.swift; sourceTree = "<group>"; };
 		7F165BC92C3416370063A197 /* ApiServiceCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServiceCharacter.swift; sourceTree = "<group>"; };
 		7F165BCB2C3416520063A197 /* ApiServiceComic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServiceComic.swift; sourceTree = "<group>"; };
 		7F165BCD2C341D590063A197 /* CardComicHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardComicHome.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				815DE9C12C34198500690031 /* CharactersView.swift */,
+				2130D1552C36D2F30039D662 /* CharactersViewModel.swift */,
 			);
 			path = Characters;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FA6C0AC2C381C1600CE5460 /* CarouselHome.swift in Sources */,
+				2130D1562C36D2F30039D662 /* CharactersViewModel.swift in Sources */,
 				7F165BD32C3421880063A197 /* LinkCardHome.swift in Sources */,
 				7F165BD72C3424EA0063A197 /* ResponseHome.swift in Sources */,
 				81A7F1382C32F35600211625 /* MarvelWikiApp.swift in Sources */,
