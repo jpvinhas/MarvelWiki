@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @State private var marvelResponse: MarvelResponse?
+    @State private var marvelResponse: MarvelResponse<Comic>?
     var ext = "jpg"
     var size = "portrait_medium"
     

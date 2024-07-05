@@ -27,7 +27,6 @@ struct ComicsView: View {
             CarroselView()
                 .padding(.top)
            ComicsList(comicsViewModel: comicsViewModel)
-            //HComicList(comicsViewModel: comicsViewModel)
         }
     }
 }

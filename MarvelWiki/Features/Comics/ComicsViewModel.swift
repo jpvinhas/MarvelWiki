@@ -26,8 +26,7 @@ class ComicsViewModel: ObservableObject {
             
             do {
                 let decoder = JSONDecoder()
-                let marvelResponse = try decoder.decode(MarvelResponse.self, from: data)
-                
+                let marvelResponse = try decoder.decode(MarvelResponse<Comic>.self, from: data)
                 comics = marvelResponse.data?.results ?? []
         
             } catch {
