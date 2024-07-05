@@ -15,9 +15,27 @@ struct ContentView: View {
                 .foregroundStyle(.tint)
             Text("Hello, world 5!")
                 .font(.custom("BentonSans Comp Black", size: 30))
-        }
+            
+        }.onAppear(perform: {
+            ApiService.singleton.getHomeJson { responseHome in
+                DispatchQueue.main.async {
+                    //print(responseHome.header.primaryLinks)
+                    //responseHome.header.primaryLinks
+                    for primaryLink in responseHome.header.primaryLinks{
+                        if primaryLink.title == "Comics"{
+                            for cardImage in primaryLink.content{
+                                print(cardImage.image.filename)
+                                //AsyncImage(url: URL(string: cardImage.image.filename) )
+                            }
+                        }
+                        
+                    }
+                }
+            }
+        })
         .padding()
     }
+    
 }
 
 

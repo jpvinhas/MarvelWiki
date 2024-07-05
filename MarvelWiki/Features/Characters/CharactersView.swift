@@ -11,7 +11,7 @@ struct CharactersView: View {
     var body: some View {
         NavigationView {
             VStack{
-                MarvelWikiSearchBar()
+                //MarvelWikiSearchBar()
                 Spacer()
                
                 //            Text("CharactersView")
