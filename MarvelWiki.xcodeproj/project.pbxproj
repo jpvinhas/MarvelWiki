@@ -16,6 +16,9 @@
 		7F165BD92C3426050063A197 /* HeaderHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F165BD82C3426050063A197 /* HeaderHome.swift */; };
 		7F165BDB2C3427170063A197 /* PrimaryLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F165BDA2C3427170063A197 /* PrimaryLink.swift */; };
 		7F40A3C82C33005000334860 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F40A3C72C33005000334860 /* ApiService.swift */; };
+		7FA6C0AC2C381C1600CE5460 /* CarouselHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA6C0AB2C381C1600CE5460 /* CarouselHome.swift */; };
+		7FA6C0AE2C381C4100CE5460 /* CarouselElementsHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA6C0AD2C381C4100CE5460 /* CarouselElementsHome.swift */; };
+		7FA6C0B02C381CAF00CE5460 /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA6C0AF2C381CAF00CE5460 /* IndicatorView.swift */; };
 		7FBE96612C3599AB003E2611 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBE96602C3599AB003E2611 /* HomeViewModel.swift */; };
 		811934472C356C30000DF3B0 /* charactersReq.json in Resources */ = {isa = PBXBuildFile; fileRef = 811934462C356C30000DF3B0 /* charactersReq.json */; };
 		811934492C357C1A000DF3B0 /* comicReq.json in Resources */ = {isa = PBXBuildFile; fileRef = 811934482C357C1A000DF3B0 /* comicReq.json */; };
@@ -49,6 +52,9 @@
 		7F165BD82C3426050063A197 /* HeaderHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderHome.swift; sourceTree = "<group>"; };
 		7F165BDA2C3427170063A197 /* PrimaryLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryLink.swift; sourceTree = "<group>"; };
 		7F40A3C72C33005000334860 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		7FA6C0AB2C381C1600CE5460 /* CarouselHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselHome.swift; sourceTree = "<group>"; };
+		7FA6C0AD2C381C4100CE5460 /* CarouselElementsHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselElementsHome.swift; sourceTree = "<group>"; };
+		7FA6C0AF2C381CAF00CE5460 /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		7FBE96602C3599AB003E2611 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		811934462C356C30000DF3B0 /* charactersReq.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = charactersReq.json; sourceTree = "<group>"; };
 		811934482C357C1A000DF3B0 /* comicReq.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = comicReq.json; sourceTree = "<group>"; };
@@ -188,6 +194,9 @@
 			children = (
 				811934462C356C30000DF3B0 /* charactersReq.json */,
 				811934482C357C1A000DF3B0 /* comicReq.json */,
+				7FA6C0AB2C381C1600CE5460 /* CarouselHome.swift */,
+				7FA6C0AD2C381C4100CE5460 /* CarouselElementsHome.swift */,
+				7FA6C0AF2C381CAF00CE5460 /* IndicatorView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -375,6 +384,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FA6C0AC2C381C1600CE5460 /* CarouselHome.swift in Sources */,
 				7F165BD32C3421880063A197 /* LinkCardHome.swift in Sources */,
 				7F165BD72C3424EA0063A197 /* ResponseHome.swift in Sources */,
 				81A7F1382C32F35600211625 /* MarvelWikiApp.swift in Sources */,
@@ -391,10 +401,12 @@
 				815DE9CA2C3419C800690031 /* SearchView.swift in Sources */,
 				815DE9C62C3419AA00690031 /* DescriptionView.swift in Sources */,
 				81A7F1382C32F35600211625 /* MarvelWikiApp.swift in Sources */,
+				7FA6C0AE2C381C4100CE5460 /* CarouselElementsHome.swift in Sources */,
 				815DE9C22C34198500690031 /* CharactersView.swift in Sources */,
 				81F911E72C34478900F6C47D /* MarvelWikiSearchBar.swift in Sources */,
 				81A7F1402C32F35600211625 /* Comic.swift in Sources */,
 				7FBE96612C3599AB003E2611 /* HomeViewModel.swift in Sources */,
+				7FA6C0B02C381CAF00CE5460 /* IndicatorView.swift in Sources */,
 				815DE9C82C3419B700690031 /* HomeView.swift in Sources */,
 				815DE9CC2C341A5A00690031 /* Routes.swift in Sources */,
 				81A7F1412C32F35600211625 /* ContentView.swift in Sources */,
