@@ -16,8 +16,7 @@ class ApiService {
     private let baseURL = "https://www.marvel.com/api/tallus"
     private let query = URLQueryItem(name: "referer", value: "https%3A%2F%2Fwww.marvel.com%2Fcomics%2Fissue%2F113014%2Fblood_hunt_2024_4")
     
-    func getHomeJson(completion: @escaping (_ responseHome: ResponseHome) -> Void) {
-        let defaultResponse = ResponseHome.init(status: 0, header:headerTest)
+    func getHomeJson(completion: @escaping (_ primaryLinks: [PrimaryLink]) -> Void) {
         let url = URL(string: baseURL)
         guard let url = url else { return }
         var requestHeader = URLRequest(url: url)
@@ -29,7 +28,7 @@ class ApiService {
                 return
             }
             let response = try? JSONDecoder().decode(ResponseHome.self, from: data)
-            completion(response ?? defaultResponse)
+            completion( response?.header.primaryLinks ?? [])
         }.resume()
     }
 }

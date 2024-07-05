@@ -26,6 +26,12 @@
 		812578F22C35C68300F40D9B /* CarroselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812578F12C35C68300F40D9B /* CarroselView.swift */; };
 		814D68D72C380F7B003EAC3A /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814D68D62C380F7B003EAC3A /* ResponseModel.swift */; };
 		814D68D92C381AB0003EAC3A /* SearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814D68D82C381AB0003EAC3A /* SearchList.swift */; };
+		7FA6C0AC2C381C1600CE5460 /* CarouselHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA6C0AB2C381C1600CE5460 /* CarouselHome.swift */; };
+		7FA6C0AE2C381C4100CE5460 /* CarouselElementsHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA6C0AD2C381C4100CE5460 /* CarouselElementsHome.swift */; };
+		7FA6C0B02C381CAF00CE5460 /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA6C0AF2C381CAF00CE5460 /* IndicatorView.swift */; };
+		7FBE96612C3599AB003E2611 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBE96602C3599AB003E2611 /* HomeViewModel.swift */; };
+		811934472C356C30000DF3B0 /* charactersReq.json in Resources */ = {isa = PBXBuildFile; fileRef = 811934462C356C30000DF3B0 /* charactersReq.json */; };
+		811934492C357C1A000DF3B0 /* comicReq.json in Resources */ = {isa = PBXBuildFile; fileRef = 811934482C357C1A000DF3B0 /* comicReq.json */; };
 		815DE9C22C34198500690031 /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815DE9C12C34198500690031 /* CharactersView.swift */; };
 		815DE9C42C34199500690031 /* ComicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815DE9C32C34199500690031 /* ComicsView.swift */; };
 		815DE9C62C3419AA00690031 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815DE9C52C3419AA00690031 /* DescriptionView.swift */; };
@@ -66,6 +72,12 @@
 		812578F12C35C68300F40D9B /* CarroselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarroselView.swift; sourceTree = "<group>"; };
 		814D68D62C380F7B003EAC3A /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		814D68D82C381AB0003EAC3A /* SearchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchList.swift; sourceTree = "<group>"; };
+		7FA6C0AB2C381C1600CE5460 /* CarouselHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselHome.swift; sourceTree = "<group>"; };
+		7FA6C0AD2C381C4100CE5460 /* CarouselElementsHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselElementsHome.swift; sourceTree = "<group>"; };
+		7FA6C0AF2C381CAF00CE5460 /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
+		7FBE96602C3599AB003E2611 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		811934462C356C30000DF3B0 /* charactersReq.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = charactersReq.json; sourceTree = "<group>"; };
+		811934482C357C1A000DF3B0 /* comicReq.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = comicReq.json; sourceTree = "<group>"; };
 		815DE9C12C34198500690031 /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
 		815DE9C32C34199500690031 /* ComicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsView.swift; sourceTree = "<group>"; };
 		815DE9C52C3419AA00690031 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
@@ -139,6 +151,14 @@
 			children = (
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		7FBE965E2C359958003E2611 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7FBE96602C3599AB003E2611 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		81A7F0D62C32F25700211625 = {
@@ -225,6 +245,11 @@
 		81A7F1282C32F35600211625 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				811934462C356C30000DF3B0 /* charactersReq.json */,
+				811934482C357C1A000DF3B0 /* comicReq.json */,
+				7FA6C0AB2C381C1600CE5460 /* CarouselHome.swift */,
+				7FA6C0AD2C381C4100CE5460 /* CarouselElementsHome.swift */,
+				7FA6C0AF2C381CAF00CE5460 /* IndicatorView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -324,6 +349,7 @@
 		81A7F1372C32F35600211625 /* MarvelWiki */ = {
 			isa = PBXGroup;
 			children = (
+				7FBE965E2C359958003E2611 /* ViewModel */,
 				81A7F1432C32F54100211625 /* Info.plist */,
 				81A7F11B2C32F35600211625 /* App */,
 				81A7F1242C32F35600211625 /* Assets */,
@@ -410,6 +436,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FA6C0AC2C381C1600CE5460 /* CarouselHome.swift in Sources */,
 				2130D1562C36D2F30039D662 /* CharactersViewModel.swift in Sources */,
 				7F165BD32C3421880063A197 /* LinkCardHome.swift in Sources */,
 				812578F22C35C68300F40D9B /* CarroselView.swift in Sources */,
@@ -432,11 +459,14 @@
 				815DE9CA2C3419C800690031 /* SearchView.swift in Sources */,
 				815DE9C62C3419AA00690031 /* DescriptionView.swift in Sources */,
 				81A7F1382C32F35600211625 /* MarvelWikiApp.swift in Sources */,
+				7FA6C0AE2C381C4100CE5460 /* CarouselElementsHome.swift in Sources */,
 				815DE9C22C34198500690031 /* CharactersView.swift in Sources */,
 				81F911E72C34478900F6C47D /* MarvelWikiSearchBar.swift in Sources */,
 				811934512C358D14000DF3B0 /* ComicsViewModel.swift in Sources */,
 				81A7F1402C32F35600211625 /* Comic.swift in Sources */,
 				811528822C36E1AC00C3D233 /* CarroselViewModel.swift in Sources */,
+				7FBE96612C3599AB003E2611 /* HomeViewModel.swift in Sources */,
+				7FA6C0B02C381CAF00CE5460 /* IndicatorView.swift in Sources */,
 				815DE9C82C3419B700690031 /* HomeView.swift in Sources */,
 				815DE9CC2C341A5A00690031 /* Routes.swift in Sources */,
 				81A7F1412C32F35600211625 /* ContentView.swift in Sources */,

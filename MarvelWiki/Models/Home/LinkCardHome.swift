@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct LinkCardHome: Codable{
+struct LinkCardHome: Identifiable, Codable{
+    var id = UUID() 
     var link: String
     var title: String
     

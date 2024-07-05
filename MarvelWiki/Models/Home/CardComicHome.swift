@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct CardComicHome: Codable{
+struct CardHome: Identifiable, Codable{
+    var id = UUID()
     var cardType: String
     var context: String
     var headline: String

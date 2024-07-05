@@ -8,13 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var homeViewModel = HomeViewModel()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world 5!")
-                .font(.custom("BentonSans Comp Black", size: 30))
+        
+        NavigationView{
             
         }.onAppear(perform: {
             ApiServiceCharacter.singleton.getCharacters () { responseCharacter in
