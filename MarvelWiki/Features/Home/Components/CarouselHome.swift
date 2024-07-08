@@ -14,11 +14,12 @@ struct CarouselHome: View{
     var primaryLink: PrimaryLink = PrimaryLink(link: "/erro", title: "Erro", content:[])
     
     var body: some View{
-        VStack{
+        VStack(alignment: .leading){
         
             Text(primaryLink.title)
                 .font(.custom("BentonSans Comp Black", size: 28))
                 .padding(.top)
+                .padding(.leading, 30)
                 .foregroundStyle(Color(.white))
             ScrollView(.horizontal, showsIndicators: false){
                 LazyHStack(spacing: 0){
@@ -31,17 +32,7 @@ struct CarouselHome: View{
                             VStack{
                                 
                                 if let url = URL(string: "https://cdn.marvel.com/content/1x/" + card1.image.filename) {
-                                    AsyncImage(url: url){ image in
-                                        image
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(maxWidth: 340)
-                                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                                            .shadow(color: .gray, radius: 10)
-                                            .padding(4)
-                                    } placeholder: {
-                                        ProgressView()
-                                    }.onAppear()
+                                    URLImageTop(url)
                                 }else{
                                     ProgressView("Loading...")
                                         .navigationTitle("Loading")
@@ -59,9 +50,14 @@ struct CarouselHome: View{
             }
             .scrollPosition(id: $scrollID)
             .scrollTargetBehavior(.paging)
-            .frame(height: 220)
+            .frame(height: 215)
+            
+        }
+        VStack{
             IndicatorView(imageCount: primaryLink.content.count, scrollID: $scrollID)
         }
     
     }
 }
+
+
