@@ -22,8 +22,10 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             VStack{
-                MarvelWikiSearchBar(searchText: $searchText, isSearching: $searchs, search: $search)
-                    .padding(.top,0)
+                Image("MWhorizontal")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 230, height: 62)
                 Spacer()
                 ScrollView{
                     VStack{
