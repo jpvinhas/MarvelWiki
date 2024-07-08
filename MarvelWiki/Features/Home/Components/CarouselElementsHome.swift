@@ -42,12 +42,14 @@ struct CarouselElementsHome: View {
                                         URLImage(url)
                                     }
                                     
-                                    Text(withTitles ? card.headline : "")
-                                        .font(.custom("BentonSans Comp Black", size: 16))
-                                        .frame(width: 100)
-                                        .padding(.bottom)
-                                        .foregroundStyle(Color(.white))
-                                    
+                                    if withTitles{
+                                        Text(card.headline)
+                                            .font(.custom("BentonSans Comp Black", size: 16))
+                                            .frame(width: 100)
+                                            .padding(.bottom)
+                                            .foregroundStyle(Color(.white))
+                                        
+                                    }
                                 }
                             }
                         }
