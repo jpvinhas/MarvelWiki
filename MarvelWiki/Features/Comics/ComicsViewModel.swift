@@ -12,6 +12,7 @@ class ComicsViewModel: ObservableObject {
     
     @Published var searchComics: [Comic]?
     @Published var comics: [Comic]?
+    @Published var newComics: [Comic]?
     @Published var searchText: String = ""
     @Published var isSearchingComic: Bool = false {
         didSet {
@@ -48,6 +49,7 @@ class ComicsViewModel: ObservableObject {
         self.searchComics = nil
         DispatchQueue.main.async {
             self.loadComics()
+            self.loadComicsByYear()
         }
     }
     
@@ -59,6 +61,20 @@ class ComicsViewModel: ObservableObject {
                 let decoder = JSONDecoder()
                 let marvelResponse = try decoder.decode(MarvelResponse<Comic>.self, from: data)
                 comics = marvelResponse.data?.results ?? []
+                
+            } catch {
+                print("Erro ao decodificar JSON:", error.localizedDescription)
+            }
+        }
+    }
+    func loadComicsByYear() {
+        apiService.getComicsByYear(startYear: 2024) { [weak self] data in
+            guard let self = self else { return }
+            
+            do {
+                let decoder = JSONDecoder()
+                let marvelResponse = try decoder.decode(MarvelResponse<Comic>.self, from: data)
+                newComics = marvelResponse.data?.results ?? []
         
             } catch {
                 print("Erro ao decodificar JSON:", error.localizedDescription)

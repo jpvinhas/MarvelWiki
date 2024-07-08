@@ -21,7 +21,7 @@ class ApiServiceComic{
     
     func getComics( completion: @escaping (_ data: Data) -> Void){
           
-        let urlString = "\(baseURL)\(urlComics)?startYear=\(startYear)&limit=\(limit)&ts=\(timesTamp)&apikey=\(apikey)&hash=\(hash)"
+        let urlString = "\(baseURL)\(urlComics)?limit=\(limit)&ts=\(timesTamp)&apikey=\(apikey)&hash=\(hash)"
         let url = URL(string: urlString)
         guard let url = url else {return}
         
@@ -37,6 +37,21 @@ class ApiServiceComic{
     func getComicsByName(tileStartsWith: String, completion: @escaping (_ data: Data) -> Void){
           
         let urlString = "\(baseURL)\(urlComics)?titleStartsWith=\(tileStartsWith)&ts=\(timesTamp)&apikey=\(apikey)&hash=\(hash)"
+        let url = URL(string: urlString)
+        guard let url = url else {return}
+        
+        var requestHeader = URLRequest(url: url)
+        requestHeader.httpMethod = "GET"
+      
+        URLSession.shared.dataTask(with: requestHeader) { data, _, _ in
+          if let data = data {
+              completion(data)
+          }
+        }.resume()
+    }
+    func getComicsByYear(startYear: Int, completion: @escaping (_ data: Data) -> Void){
+          
+        let urlString = "\(baseURL)\(urlComics)?startYear=\(startYear)&limit=\(limit)&ts=\(timesTamp)&apikey=\(apikey)&hash=\(hash)"
         let url = URL(string: urlString)
         guard let url = url else {return}
         
