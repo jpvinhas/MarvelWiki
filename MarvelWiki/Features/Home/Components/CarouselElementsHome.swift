@@ -42,7 +42,7 @@ struct CarouselElementsHome: View {
                                     }
                                     
                                     if withTitles{
-                                        Text(withTitles ? card.headline : "")
+                                        Text(card.headline)
                                             .font(.custom("BentonSans Comp Black", size: 16))
                                             .frame(width: 100)
                                             .padding(.bottom)
