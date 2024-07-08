@@ -16,13 +16,15 @@ class ApiServiceCharacter {
     private let hash = "577688d4b287d1393f4c3103644aa1f3"
     private let baseURL: String = "https://gateway.marvel.com:443/v1/public/characters"
     
-    func getCharacters ( completion: @escaping (_ charactersResponse: [Character])  -> Void ){
+    func getCharacters (page: Int = 0, limit: Int = 20, completion: @escaping (_ charactersResponse: [Character])  -> Void ){
         let queryTs = URLQueryItem(name: "ts", value: timesTamp)
         let queryApikey = URLQueryItem(name: "apikey", value: apikey)
         let queryHash = URLQueryItem(name: "hash", value: hash)
+        let queryOffset = URLQueryItem(name: "offset", value: "\(page * limit)")
+        let queryLimit = URLQueryItem(name: "limit", value: "\(limit)")
        
         var url = URL(string: baseURL)
-        url?.append(queryItems: [queryTs, queryApikey, queryHash])
+        url?.append(queryItems: [queryTs, queryApikey, queryHash, queryLimit, queryOffset])
         guard let url = url else { return }
         
         URLSession.shared.dataTask(with: url){ (data, response, error) in
@@ -30,7 +32,13 @@ class ApiServiceCharacter {
             let jsonDecoder = JSONDecoder()
             do {
                 let charactersResponse = try jsonDecoder.decode(MarvelResponse<Character>.self, from: data)
-                completion(charactersResponse.data?.results ?? [])
+                if let results =  charactersResponse.data?.results{
+                    completion(results)
+                    
+                }else {
+                    completion([])
+                }
+                    
             } catch {
                 print("Error decoding JSON: \(error)")
             }

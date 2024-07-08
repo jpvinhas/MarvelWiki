@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var homeViewModel = HomeViewModel()
-    
+    var currentPage = 0
     var body: some View {
         
         NavigationView{
