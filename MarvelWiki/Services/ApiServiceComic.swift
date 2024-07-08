@@ -64,4 +64,18 @@ class ApiServiceComic{
           }
         }.resume()
     }
+    func getComics2(offset: Int = 0, completion: @escaping (_ data: Data) -> Void) {
+        let urlString = "\(baseURL)\(urlComics)?limit=\(limit)&offset=\(offset)&ts=\(timesTamp)&apikey=\(apikey)&hash=\(hash)"
+        let url = URL(string: urlString)
+        guard let url = url else { return }
+        
+        var requestHeader = URLRequest(url: url)
+        requestHeader.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: requestHeader) { data, _, _ in
+            if let data = data {
+                completion(data)
+            }
+        }.resume()
+    }
 }

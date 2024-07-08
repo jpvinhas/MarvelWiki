@@ -13,6 +13,8 @@ class ComicsViewModel: ObservableObject {
     @Published var searchComics: [Comic]?
     @Published var comics: [Comic]?
     @Published var newComics: [Comic]?
+    private var offset = 0
+    private let limit = 18
     @Published var searchText: String = ""
     @Published var isSearchingComic: Bool = false {
         didSet {
@@ -37,6 +39,7 @@ class ComicsViewModel: ObservableObject {
         }
     }
     
+    
     private let apiService = ApiServiceComic.singleton
     
     let columns: [GridItem] = [
@@ -51,6 +54,7 @@ class ComicsViewModel: ObservableObject {
             self.loadComics()
             self.loadComicsByYear()
         }
+        self.offset += 18
     }
     
     func loadComics() {
@@ -93,6 +97,21 @@ class ComicsViewModel: ObservableObject {
             } catch {
                 print("Erro ao decodificar JSON:", error.localizedDescription)
                 searchComics = []
+            }
+        }
+    }
+    func loadMoreComics() {
+        DispatchQueue.main.async {
+            ApiServiceComic.singleton.getComics2(offset: self.offset) { [weak self] data in
+                guard let self = self else { return }
+                do {
+                    let decoder = JSONDecoder()
+                    let marvelResponse = try decoder.decode(MarvelResponse<Comic>.self, from: data)
+                    self.comics?.append(contentsOf: marvelResponse.data?.results ?? [])
+                    self.offset += self.limit
+                } catch {
+                    print("Error decoding data: \(error)")
+                }
             }
         }
     }

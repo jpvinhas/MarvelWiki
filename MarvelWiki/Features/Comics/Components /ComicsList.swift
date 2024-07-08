@@ -8,20 +8,26 @@
 import SwiftUI
 
 struct ComicsList: View {
+    let columns: [GridItem] = [
+        GridItem(.flexible(), spacing: 36),
+        GridItem(.flexible(), spacing: 36),
+        GridItem(.flexible(), spacing: 36)
+    ]
     
-    @EnvironmentObject var comicsViewModel: ComicsViewModel
+    @Binding var comics: [Comic]?
+    var def = "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
 
+    
     var body: some View {
         VStack(alignment: .leading){
-            Text("Comics")
-                .font(.custom("BentonSans Comp Black", size: 26))
-                .foregroundStyle(Color.white)
-                .padding(.leading,24)
-            if comicsViewModel.comics != nil {
+            if comics != nil {
                 ScrollView(.vertical, showsIndicators: false) {
-                    LazyVGrid(columns: comicsViewModel.columns, spacing: 20) {
-                        ForEach(comicsViewModel.comics ?? []) { comic in
-                            ComicBox(comic: comic)
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        ForEach(comics ?? []) { comic in
+                            if comic.thumbnail.path != def {
+                                ComicBox(comic: comic)
+                                    .frame(maxWidth: 100)
+                            }
                         }
                     }
                     .padding(.top,5)

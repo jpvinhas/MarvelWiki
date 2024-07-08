@@ -22,14 +22,12 @@ struct HComicList: View {
                     .font(.custom("BentonSans Comp Black", size: 26))
                     .foregroundStyle(Color.white)
                 Spacer()
-                Button(action: {
-                    print("see all")
-                }, label: {
+                NavigationLink(destination: MoreComicsView(title: title)){
                     Text("See All")
                         .font(.custom("BentonSans Comp Black", size: 15))
                         .foregroundStyle(Color.white)
                         .opacity(0.5)
-                })
+                }.navigationBarBackButtonHidden(true)
             }
             .padding()
             .padding(.horizontal,12)
