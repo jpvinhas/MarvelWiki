@@ -50,7 +50,7 @@ struct CarouselHome: View{
             }
             .scrollPosition(id: $scrollID)
             .scrollTargetBehavior(.paging)
-            .frame(height: 210)
+            .frame(height: 215)
             
         }
         VStack{

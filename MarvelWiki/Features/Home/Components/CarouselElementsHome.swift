@@ -26,7 +26,6 @@ struct CarouselElementsHome: View {
             Text(primaryLink.title)
                 .font(.custom("BentonSans Comp Black", size: 24))
                 .padding(.top, 15)
-                .padding(.bottom, -10)
                 .padding(.leading, 30)
                 .foregroundStyle(Color(.white))
             ScrollView(.horizontal, showsIndicators: false){
@@ -48,12 +47,11 @@ struct CarouselElementsHome: View {
                                             .frame(width: 100)
                                             .padding(.bottom)
                                             .foregroundStyle(Color(.white))
-                                        
                                     }
+                                    
                                 }
                             }
                         }
-                        .padding(.top)
                         .containerRelativeFrame(.horizontal)
                             .scrollTransition(.animated, axis: .horizontal) { content, phase in
                                 content

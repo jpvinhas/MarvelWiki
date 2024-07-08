@@ -19,9 +19,12 @@ struct ComicsView: View {
                 SearchList()
                 Spacer()
             }else{
-                CarroselView()
-                    .padding(.top)
-                ComicsList()
+                ScrollView{
+                    CarroselView()
+                        .padding(.top)
+                    HComicList(title: "New Comics",comics: comicsViewModel.newComics)
+                    HComicList(title: "All Comics",comics: comicsViewModel.comics)
+                }
             }
         }
     }
