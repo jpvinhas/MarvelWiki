@@ -1,64 +1,47 @@
-//
-//  CharactersView.swift
-//  MarvelWiki
-//
-//  Created by João Pedro Borges on 02/07/24.
-//
-
 import SwiftUI
-
 
 struct CharactersView: View {
     @StateObject private var viewModel = CharactersViewModel()
-   
-    var size = "portrait_medium"
-    var notload = "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available/portrait_medium.jpg"
     
+    var size = "portrait_medium"
+    var notLoad = [
+        "http://i.annihil.us/u/prod/marvel/i/mg/f/60/4c002e0305708",
+        "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
+    ]
     private let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
         NavigationView {
-            VStack{
+            VStack {
                 Spacer()
-                ScrollView{
-                    LazyVGrid(columns: columns, spacing: 20){
-                        ForEach(viewModel.characters){ character in
-                            VStack{
-                                if let url = URL(string: "\(character.thumbnail.path)/\(size).\(character.thumbnail.ext)")
-                                {
-                                    
-                                    if url.absoluteURL != URL(string: notload) {
-                                        VStack{
-                                          
-                                            AsyncImage(url: url) { image in
-                                                image
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 100, height: 150)
-                                                    .cornerRadius(10)
-                                                
-                                            } placeholder: {
-                                                ProgressView()
-                                                    .frame(width: 100, height: 150, alignment: .center)
-                                                    .cornerRadius(10)
-                                                                                              
-                                            }
-                                            Text(character.name)
-                                                .font(Font.custom("BentonSans Comp Black", size: 14))
-                                                .multilineTextAlignment(.center)
-                                                .frame(width: 100, height: 14)
-                                                .foregroundColor(.white)
-                                                .padding(.top, 3)
-                                          
-                                            }
-                                        }
-                                      
+                ScrollView {
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        ForEach(filteredCharacters()) { character in
+                            VStack {
+                                if let url = URL(string: "\(character.thumbnail.path)/\(size).\(character.thumbnail.ext)") {
+                                    AsyncImage(url: url) { image in
+                                        image
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 100, height: 150)
+                                            .cornerRadius(10)
+                                    } placeholder: {
+                                        ProgressView()
+                                            .frame(width: 100, height: 150)
+                                            .cornerRadius(10)
                                     }
-                                }.onAppear{
-                                    if character == viewModel.characters.last {
-                                        viewModel.fetchMoreCharacters()
-                                    }
-                                          
+                                    Text(character.name)
+                                        .font(Font.custom("BentonSans Comp Black", size: 14))
+                                        .multilineTextAlignment(.center)
+                                        .frame(width: 100, height: 14)
+                                        .foregroundColor(.white)
+                                        .padding(.top, 3)
+                                }
+                            }
+                            .onAppear {
+                                if character == filteredCharacters().last {
+                                    viewModel.fetchMoreCharacters()
+                                }
                             }
                         }
                     }
@@ -69,23 +52,25 @@ struct CharactersView: View {
                     if viewModel.isLoading {
                         ProgressView()
                             .padding()
-                        }
                     }
-               }
-            .onAppear{
+                }
+            }
+            .onAppear {
                 viewModel.fetchCharacters()
             }
             .frame(maxWidth: .infinity)
             .background(Color("mBackground"))
         }
- 
     }
-
-  
- }
-
+    
+    private func filteredCharacters() -> [Character] {
+        return viewModel.characters.filter { character in
+            let url = "\(character.thumbnail.path)/\(size).\(character.thumbnail.ext)"
+            return !notLoad.contains(where: { url.contains($0) })
+        }
+    }
+}
 
 #Preview {
     CharactersView()
-    
 }
