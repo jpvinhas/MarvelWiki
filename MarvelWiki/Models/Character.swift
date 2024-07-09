@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Character: Identifiable, Codable {
+struct Character: Identifiable, Codable, Equatable {
+      
     var id: Int
     var name: String
     var description: String
@@ -18,8 +19,19 @@ struct Character: Identifiable, Codable {
 
     struct Thumbnail: Codable {
         var path: String
+        var ext: String
+        
+        enum CodingKeys: String, CodingKey {
+            case path
+            case ext = "extension"
+        }
                
     }
+    
+    static func == (lhs: Character, rhs: Character) -> Bool{
+        return lhs.id == rhs.id
+    }
+    
     
     struct Comics: Codable {
         var available: Int
