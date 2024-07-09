@@ -40,11 +40,11 @@ struct CarouselHome: View{
                             }
                             
                         }.containerRelativeFrame(.horizontal)
-                            .scrollTransition(.animated, axis: .horizontal) { content, phase in
-                                content
-                                    .opacity(phase.isIdentity ? 1.0 : 0.6)
-                                    .scaleEffect(phase.isIdentity ? 1.0 : 0.6)
-                            }
+                        .scrollTransition(.animated, axis: .horizontal) { content, phase in
+                            content
+                                .opacity(phase.isIdentity ? 1.0 : 0.6)
+                                .scaleEffect(phase.isIdentity ? 1.0 : 0.6)
+                        }
                     }
                 }.scrollTargetLayout()
             }

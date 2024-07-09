@@ -13,6 +13,7 @@ struct CarouselElementsHome: View {
     var primaryLink: PrimaryLink = PrimaryLink(link: "/erro", title: "Erro", content:[])
     var withBaseUrl: Bool
     var withTitles: Bool
+    @State var id: Int = 13860
     private var baseURL = "https://cdn.marvel.com/content/1x/"
     
     init(primaryLink: PrimaryLink, withBaseUrl: Bool, withTitles: Bool) {
@@ -34,21 +35,22 @@ struct CarouselElementsHome: View {
                         HStack{
                             ForEach(0..<3) { subIndex in
                                 let card = primaryLink.content[index * 3 + subIndex]
-                                
-                                VStack{
-                                    if let url = URL(string: (withBaseUrl ? baseURL : "") + card.image.filename) {
+                            
+                                NavigationLink(destination: ComicDescription( idComic: $id)) {
+                                    
+                                    VStack{
+                                        if let url = URL(string: (withBaseUrl ? baseURL : "") + card.image.filename) {
+                                            URLImage(url)
+                                        }
                                         
-                                        URLImage(url)
+                                        if withTitles{
+                                            Text(card.headline)
+                                                .font(.custom("BentonSans Comp Black", size: 16))
+                                                .frame(width: 100)
+                                                .padding(.bottom)
+                                                .foregroundStyle(Color(.white))
+                                        }
                                     }
-                                    
-                                    if withTitles{
-                                        Text(card.headline)
-                                            .font(.custom("BentonSans Comp Black", size: 16))
-                                            .frame(width: 100)
-                                            .padding(.bottom)
-                                            .foregroundStyle(Color(.white))
-                                    }
-                                    
                                 }
                             }
                         }

@@ -17,7 +17,6 @@ struct HomeView: View {
     var ext = "jpg"
     var size = "portrait_medium"
     @StateObject private var homeViewModel = HomeViewModel()
-  
 
     var body: some View {
         NavigationStack {

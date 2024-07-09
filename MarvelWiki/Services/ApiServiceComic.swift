@@ -64,4 +64,22 @@ class ApiServiceComic{
           }
         }.resume()
     }
+    
+    func getComicById(id: Int, completion: @escaping (_ comic: [Comic]) -> Void){
+        
+        let urlString = "\(baseURL)\(urlComics)/\(id)?ts=\(timesTamp)&apikey=\(apikey)&hash=\(hash)"
+        let url = URL(string: urlString)
+        guard let url = url else {return}
+        
+        var requestHeader = URLRequest(url: url)
+        requestHeader.httpMethod = "GET"
+      
+        URLSession.shared.dataTask(with: requestHeader) { data, _, _ in
+            guard let data = data else{
+                return
+            }
+            let response = try? JSONDecoder().decode(MarvelResponse<Comic>.self, from: data)
+            completion(response?.data?.results ?? [])
+        }.resume()
+    }
 }

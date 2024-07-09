@@ -10,10 +10,19 @@ import SwiftUI
 
 class ComicsViewModel: ObservableObject {
     
+    @Published var comicById: Comic?
     @Published var searchComics: [Comic]?
     @Published var comics: [Comic]?
     @Published var newComics: [Comic]?
     @Published var searchText: String = ""
+    @Published var idComic: Int = 13860 {
+        didSet{
+            if self.idComic != 0 {
+                //self.loadComicById()
+                //self.idComic = 0
+            }
+        }
+    }
     @Published var isSearchingComic: Bool = false {
         didSet {
             if self.searchText.count != 0 {
@@ -50,6 +59,7 @@ class ComicsViewModel: ObservableObject {
         DispatchQueue.main.async {
             self.loadComics()
             self.loadComicsByYear()
+            //self.loadComicById()
         }
     }
     
@@ -95,5 +105,15 @@ class ComicsViewModel: ObservableObject {
                 searchComics = []
             }
         }
+    }
+    func loadComicById(id: Int) -> Comic?{
+        apiService.getComicById(id: id){ [weak self] comic in
+            guard let self = self else { return }
+          
+            comicById = comic.first
+            print(comic.first ?? [])
+            
+        }
+        return comicById ?? nil
     }
 }
