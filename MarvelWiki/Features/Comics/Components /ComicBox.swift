@@ -24,18 +24,20 @@ struct ComicBox: View {
                         image
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 100, height: 150).cornerRadius(10)
-                } placeholder: {
-                    ProgressView()
-                        .frame(width: 100, height: 150, alignment: .center)
+                            .frame(width: 100, height: 150)
+                            .cornerRadius(10)
+                    } placeholder: {
+                        ProgressView()
+                            .frame(width: 100, height: 150, alignment: .center)
+                    }
                 }
-            }
             Text("\( formatTitle(title: comic.title ?? ""))")
-                .font(.custom("BentonSans Comp Black", size: 14))
-                .foregroundStyle(Color.white)
-                .lineLimit(1)
-                .truncationMode(.tail)
+            .font(.custom("BentonSans Comp Black", size: 14))
+            .foregroundStyle(Color.white)
+            .lineLimit(1)
+            .truncationMode(.tail)
         }
+        
     }
     func formatTitle(title: String) -> String {
         let components = title.components(separatedBy: " (")

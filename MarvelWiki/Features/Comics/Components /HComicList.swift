@@ -31,7 +31,7 @@ struct HComicList: View {
             }
             .padding()
             .padding(.horizontal,12)
-            if comics != nil {
+            if comics?.count != 0 {
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: rows, alignment: .center) {
                         ForEach(comics ?? []) { comic in

@@ -10,10 +10,10 @@ import SwiftUI
 struct MoreComicsView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var comicsViewModel: ComicsViewModel
+    @EnvironmentObject var viewModel: ComicsViewModel
 
     var title: String?
-
+    
     var body: some View {
         VStack{
             HStack{
@@ -32,13 +32,17 @@ struct MoreComicsView: View {
                 Spacer()
             }
             .padding(30)
-            ComicsList(comics: $comicsViewModel.comics)
-            Button {
-                comicsViewModel.loadMoreComics()
-            } label: {
-                Text("load")
-            }
-
+            ComicsList(comics: title == "New Comics" ? $viewModel.newComics : $viewModel.comics, moreAction: title == "New Comics" ? viewModel.loadNewComics : viewModel.loadComics)
+                .onDisappear{
+                    if title == "New Comics" {
+                        viewModel.newComics?.removeSubrange(15..<viewModel.newOffset)
+                        viewModel.newOffset = viewModel.limit
+                    }else {
+                        let size = viewModel.comics?.count ?? 15
+                        viewModel.comics?.removeSubrange(15..<size)
+                        viewModel.allOffset = viewModel.limit
+                    }
+                }
         }
         .background(Color("mBackground"))
         .navigationBarBackButtonHidden(true)

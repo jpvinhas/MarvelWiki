@@ -13,8 +13,10 @@ class ComicsViewModel: ObservableObject {
     @Published var searchComics: [Comic]?
     @Published var comics: [Comic]?
     @Published var newComics: [Comic]?
-    private var offset = 0
-    private let limit = 18
+    var newOffset = 0
+    var allOffset = 0
+    var searchOffset = 0
+    let limit = 15
     @Published var searchText: String = ""
     @Published var isSearchingComic: Bool = false {
         didSet {
@@ -39,7 +41,6 @@ class ComicsViewModel: ObservableObject {
         }
     }
     
-    
     private let apiService = ApiServiceComic.singleton
     
     let columns: [GridItem] = [
@@ -50,36 +51,41 @@ class ComicsViewModel: ObservableObject {
     
     init() {
         self.searchComics = nil
+        self.comics = []
+        self.newComics = []
         DispatchQueue.main.async {
             self.loadComics()
-            self.loadComicsByYear()
+            self.loadNewComics()
         }
-        self.offset += 18
     }
     
     func loadComics() {
-        apiService.getComics { [weak self] data in
+        apiService.getComics(offset: allOffset){ [weak self] data in
             guard let self = self else { return }
             
             do {
                 let decoder = JSONDecoder()
                 let marvelResponse = try decoder.decode(MarvelResponse<Comic>.self, from: data)
-                comics = marvelResponse.data?.results ?? []
-                
+                let newComics = marvelResponse.data?.results ?? []
+                let uniqueNewComics = newComics.filter { newComic in
+                    !(self.comics?.contains { $0.id == newComic.id } ?? false)
+                }
+                self.comics?.append(contentsOf: uniqueNewComics)
+                allOffset += limit
             } catch {
                 print("Erro ao decodificar JSON:", error.localizedDescription)
             }
         }
     }
-    func loadComicsByYear() {
-        apiService.getComicsByYear(startYear: 2024) { [weak self] data in
+    func loadNewComics() {
+        apiService.getComicsByYear(startYear: 2024, offset: newOffset) { [weak self] data in
             guard let self = self else { return }
             
             do {
                 let decoder = JSONDecoder()
                 let marvelResponse = try decoder.decode(MarvelResponse<Comic>.self, from: data)
-                newComics = marvelResponse.data?.results ?? []
-        
+                self.newComics?.append(contentsOf: marvelResponse.data?.results ?? [])
+                newOffset += limit
             } catch {
                 print("Erro ao decodificar JSON:", error.localizedDescription)
             }
@@ -97,21 +103,6 @@ class ComicsViewModel: ObservableObject {
             } catch {
                 print("Erro ao decodificar JSON:", error.localizedDescription)
                 searchComics = []
-            }
-        }
-    }
-    func loadMoreComics() {
-        DispatchQueue.main.async {
-            ApiServiceComic.singleton.getComics2(offset: self.offset) { [weak self] data in
-                guard let self = self else { return }
-                do {
-                    let decoder = JSONDecoder()
-                    let marvelResponse = try decoder.decode(MarvelResponse<Comic>.self, from: data)
-                    self.comics?.append(contentsOf: marvelResponse.data?.results ?? [])
-                    self.offset += self.limit
-                } catch {
-                    print("Error decoding data: \(error)")
-                }
             }
         }
     }
