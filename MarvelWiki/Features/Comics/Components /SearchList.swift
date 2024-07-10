@@ -8,48 +8,58 @@
 import SwiftUI
 
 struct SearchList: View {
-    @EnvironmentObject var comicsViewModel: ComicsViewModel
+    @ObservedObject var searchModel: SearchViewModel
 
     var body: some View {
         VStack(alignment: .leading){
-            if comicsViewModel.searchComics != nil && comicsViewModel.searchComics?.count != 0 {
+            if searchModel.searchComics?.count != 0 {
                 ScrollView(.vertical, showsIndicators: false) {
-                    LazyVGrid(columns: comicsViewModel.columns, spacing: 20) {
-                        ForEach(comicsViewModel.searchComics ?? []) { comic in
+                    Text("\(searchModel.total) results:")
+                        .font(.custom("BentonSans Comp Black", size: 16))
+                        .foregroundStyle(Color("mClearGray"))
+                    LazyVGrid(columns: searchModel.columns, spacing: 20) {
+                        ForEach(filteredComics()) { comic in
                             ComicBox(comic: comic)
                         }
                     }
                     .padding(.top,5)
                     .padding(.horizontal,30)
-                    Button(action: {
-                        print("loadMore")
-                    }, label: {
-                        HStack{
-                            Text("Load More")
-                                .font(.custom("BentonSans Comp Black", size: 20))
-                            Image(systemName: "arrow.down.circle")
-                        }
-                        .padding()
-                        .background(Color("mRed"))
-                        .cornerRadius(10)
-                    })
+                    
+                    if searchModel.isLoading {
+                        ProgressView("Loading...")
+                            .foregroundStyle(Color("mClearGray"))
+                            .frame(minWidth: UIScreen.main.bounds.width)
+                    }else {
+                        Button(action: {
+                            searchModel.loadSearchComics()
+                        }, label: {
+                            HStack{
+                                Text("Load More")
+                                    .font(.custom("BentonSans Comp Black", size: 20))
+                                Image(systemName: "arrow.down.circle")
+                            }
+                            .padding()
+                            .background(Color("mRed"))
+                            .cornerRadius(10)
+                        })
+                    }
                 }
             }else {
                 Spacer()
-                if comicsViewModel.searchText.count == 0 {
+                if searchModel.isLoading {
+                    ProgressView("Loading...")
+                        .foregroundStyle(Color("mClearGray"))
+                        .frame(minWidth: UIScreen.main.bounds.width)
+                }else if searchModel.searchText.count == 0 {
                     Text("Search")
                         .foregroundStyle(Color("mClearGray"))
                         .frame(minWidth: UIScreen.main.bounds.width)
-                }else if comicsViewModel.searchComics == nil {
+                }else if searchModel.searchComics?.count == 0{
                     Text("Click on Search")
                         .foregroundStyle(Color("mClearGray"))
                         .frame(minWidth: UIScreen.main.bounds.width)
-                }else if comicsViewModel.searchComics?.count == 0 {
+                }else if searchModel.total == 0 {
                     Text("Not Found")
-                        .foregroundStyle(Color("mClearGray"))
-                        .frame(minWidth: UIScreen.main.bounds.width)
-                }else {
-                    ProgressView("Loading...")
                         .foregroundStyle(Color("mClearGray"))
                         .frame(minWidth: UIScreen.main.bounds.width)
                 }
@@ -58,7 +68,13 @@ struct SearchList: View {
         }.padding(.top,5)
         .onDisappear{
             print("apagando array")
-            comicsViewModel.searchComics?.removeAll()
+            searchModel.searchComics?.removeAll()
         }
+    }
+    private func filteredComics() -> [Comic] {
+        let def = "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
+        return searchModel.searchComics?.filter { comic in
+            return comic.thumbnail.path != def
+        } ?? []
     }
 }

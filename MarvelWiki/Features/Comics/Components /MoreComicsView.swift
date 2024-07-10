@@ -35,11 +35,11 @@ struct MoreComicsView: View {
             ComicsList(comics: title == "New Comics" ? $viewModel.newComics : $viewModel.comics, moreAction: title == "New Comics" ? viewModel.loadNewComics : viewModel.loadComics)
                 .onDisappear{
                     if title == "New Comics" {
-                        viewModel.newComics?.removeSubrange(15..<viewModel.newOffset)
+                        viewModel.newComics?.removeSubrange(20..<viewModel.newOffset)
                         viewModel.newOffset = viewModel.limit
                     }else {
-                        let size = viewModel.comics?.count ?? 15
-                        viewModel.comics?.removeSubrange(15..<size)
+                        let size = viewModel.comics?.count ?? 20
+                        viewModel.comics?.removeSubrange(20..<size)
                         viewModel.allOffset = viewModel.limit
                     }
                 }

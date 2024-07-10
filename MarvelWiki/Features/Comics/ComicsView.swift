@@ -10,14 +10,15 @@ import SwiftUI
 struct ComicsView: View {
     
     @EnvironmentObject var comicsViewModel: ComicsViewModel
+    @StateObject var searchModel: SearchViewModel = SearchViewModel()
     
     var body: some View {
         NavigationStack{
             VStack {
-                MarvelWikiSearchBar(searchText: $comicsViewModel.searchText, isSearching: $comicsViewModel.isSearchingComic, search: $comicsViewModel.search)
+                MarvelWikiSearchBar(searchText: $searchModel.searchText, isSearching: $searchModel.isSearchingComic, search: $searchModel.search)
                     .padding(.top,0)
-                if comicsViewModel.isSearchingComic {
-                    SearchList()
+                if searchModel.isSearchingComic {
+                    SearchList(searchModel: searchModel)
                     Spacer()
                 }else{
                     ScrollView{

@@ -41,6 +41,7 @@
 		815DE9CC2C341A5A00690031 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815DE9CB2C341A5A00690031 /* Routes.swift */; };
 		815DE9D02C3425FA00690031 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815DE9CF2C3425FA00690031 /* TabBarView.swift */; };
 		817A8E912C3D6F28008103B4 /* ComicDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817A8E902C3D6F28008103B4 /* ComicDescription.swift */; };
+		817D807B2C3EBB310047E64A /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817D807A2C3EBB310047E64A /* SearchViewModel.swift */; };
 		81A7F1382C32F35600211625 /* MarvelWikiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A7F11A2C32F35600211625 /* MarvelWikiApp.swift */; };
 		81A7F1392C32F35600211625 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81A7F11C2C32F35600211625 /* Poppins-Bold.ttf */; };
 		81A7F13A2C32F35600211625 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81A7F11D2C32F35600211625 /* Poppins-Light.ttf */; };
@@ -89,6 +90,7 @@
 		815DE9CB2C341A5A00690031 /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		815DE9CF2C3425FA00690031 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		817A8E902C3D6F28008103B4 /* ComicDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDescription.swift; sourceTree = "<group>"; };
+		817D807A2C3EBB310047E64A /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		81A7F0DF2C32F25700211625 /* MarvelWiki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelWiki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81A7F11A2C32F35600211625 /* MarvelWikiApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelWikiApp.swift; sourceTree = "<group>"; };
 		81A7F11C2C32F35600211625 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				811934542C35BF3E000DF3B0 /* ComicsList.swift */,
 				811528842C3701AE00C3D233 /* HComicList.swift */,
 				814D68D82C381AB0003EAC3A /* SearchList.swift */,
+				817D807A2C3EBB310047E64A /* SearchViewModel.swift */,
 			);
 			path = "Components ";
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				7FA6C0B02C381CAF00CE5460 /* IndicatorView.swift in Sources */,
 				815DE9C82C3419B700690031 /* HomeView.swift in Sources */,
 				815DE9CC2C341A5A00690031 /* Routes.swift in Sources */,
+				817D807B2C3EBB310047E64A /* SearchViewModel.swift in Sources */,
 				81A7F1412C32F35600211625 /* ContentView.swift in Sources */,
 				814D68D92C381AB0003EAC3A /* SearchList.swift in Sources */,
 				811934532C358D23000DF3B0 /* ComicBox.swift in Sources */,
