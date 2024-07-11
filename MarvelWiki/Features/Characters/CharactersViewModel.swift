@@ -13,7 +13,7 @@ class CharactersViewModel: ObservableObject {
     @Published var characters : [Character] = []
     @Published var character : Character?
     @Published var nameStartsWithCharacters: [Character] = []
-    @Published var searchCharacter: [Character]?
+    @Published var searchCharacter: [Character] = []
     @Published var searchText: String = ""
     @Published var isLoading = false
     
@@ -23,13 +23,17 @@ class CharactersViewModel: ObservableObject {
     private var errorMessage: String?
     private let apiService = ApiServiceCharacter.singleton
     
+    let notLoad = [
+        "http://i.annihil.us/u/prod/marvel/i/mg/f/60/4c002e0305708",
+        "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
+    ]
+    
     @Published var isSearchingCharacter: Bool = false{
         didSet {
             if self.searchText.count != 0 {
                 self.fetchCharactersByName()
             }else {
-                self.searchCharacter?.removeAll()
-                self.searchCharacter = nil
+                self.searchCharacter.removeAll()
             }
         }
     }
@@ -41,15 +45,13 @@ class CharactersViewModel: ObservableObject {
                 self.fetchCharactersByName()
             }else{
                 print("no text")
-                self.searchCharacter?.removeAll()
-                self.searchCharacter = nil
+                self.searchCharacter.removeAll()
             }
         }
     }
     
     
     init() {
-        self.searchCharacter = nil
         DispatchQueue.main.async {
             self.fetchCharacters()
             self.fetchCharactersByName()
@@ -97,7 +99,7 @@ class CharactersViewModel: ObservableObject {
             }
         }
     }
-   
+    
     func fetchCharactersByName(){
         guard !searchText.isEmpty else {
             self.searchCharacter = []
@@ -112,7 +114,7 @@ class CharactersViewModel: ObservableObject {
             DispatchQueue.main.async {
                 guard let self = self else {return}
                 if let nameStartsWithResponse = nameStartsWithResponse {
-                    self.searchCharacter = nameStartsWithResponse
+                    self.searchCharacter = self.filteredCharacters(characters: nameStartsWithResponse)
                 } else{
                     self.searchCharacter = []
                     self.errorMessage = "personagem não encontrado"
@@ -122,6 +124,16 @@ class CharactersViewModel: ObservableObject {
         }
     }
     
+    private func filteredCharacters(characters: [Character]) -> [Character] {
+        return characters.filter { character in
+            let url = "\(character.thumbnail.path)/portrait_medium.\(character.thumbnail.ext)"
+            return !notLoad.contains(where: { url.contains($0) })
+        }
+    }
+    
+    func getFilteredCharacters() -> [Character] {
+        return filteredCharacters(characters: characters)
+    }
     
     
 }

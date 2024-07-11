@@ -2,14 +2,14 @@ import SwiftUI
 
 struct CharactersView: View {
     
-    @EnvironmentObject var viewModel: CharactersViewModel
+    @StateObject private var viewModel = CharactersViewModel ()
     
    var body: some View {
         NavigationView {
             VStack {
                 MarvelWikiSearchBar(searchText: $viewModel.searchText, isSearching: $viewModel.isSearchingCharacter, search: $viewModel.search)
                 Spacer()
-                if viewModel.isSearchingCharacter  || viewModel.search {
+                if viewModel.isSearchingCharacter  {
                     SearchCharacters()
                         .environmentObject(viewModel)
                 }else{

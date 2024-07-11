@@ -13,25 +13,21 @@ struct SearchCharacters: View {
     
     var body: some View {
         VStack(alignment: .leading){
-            if charactersViewModel.searchCharacter != nil && charactersViewModel.searchCharacter?.count != 0 {
+            if !charactersViewModel.searchCharacter.isEmpty {
                 ScrollView(.vertical, showsIndicators: false) {
                     LazyVGrid(columns: charactersViewModel.columns, spacing: 20) {
-                        ForEach(charactersViewModel.searchCharacter ?? []) { character in
+                        ForEach(charactersViewModel.searchCharacter) { character in
                             CharacterBox(character: character)
                         }
                     }
                 }
             }else {
                 Spacer()
-                if charactersViewModel.searchText.count == 0 {
+                if charactersViewModel.searchText.isEmpty {
                     Text("Search")
                         .foregroundStyle(Color("mClearGray"))
                         .frame(minWidth: UIScreen.main.bounds.width)
-                }else if charactersViewModel.searchCharacter == nil {
-                    Text("Click on Search")
-                        .foregroundStyle(Color("mClearGray"))
-                        .frame(minWidth: UIScreen.main.bounds.width)
-                }else if charactersViewModel.searchCharacter?.count == 0 {
+                }else if charactersViewModel.searchCharacter.isEmpty {
                     Text("Not Found")
                         .foregroundStyle(Color("mClearGray"))
                         .frame(minWidth: UIScreen.main.bounds.width)
@@ -42,13 +38,13 @@ struct SearchCharacters: View {
                 }
                 Spacer()
             }
-        }.padding(.top,5)
+        }   .padding(.top, 10)
             .padding(.leading, 22)
             .padding(.trailing, 22)
             .onDisappear{
                 print("apagando array")
-                charactersViewModel.searchCharacter?.removeAll()
-        }
+                charactersViewModel.searchCharacter.removeAll()
+            }
     }
 }
 
