@@ -6,11 +6,13 @@
 //
 import Combine
 import Foundation
+import SwiftUI
 
 class CharactersViewModel: ObservableObject {
+    
     @Published var characters : [Character] = []
     @Published var character : Character?
-    @Published var nameStartsWithCharacters: [Character] = []
+    @Published var nameStartsWithCharacters: [Character]? = []
     @Published var searchCharacter: [Character]?
     @Published var searchText: String = ""
     @Published var isLoading = false
@@ -21,9 +23,46 @@ class CharactersViewModel: ObservableObject {
     private var errorMessage: String?
     private let apiService = ApiServiceCharacter.singleton
     
-    init() {
-        fetchCharacters()
+    @Published var isSearchingCharacter: Bool = false{
+        didSet {
+            if self.searchText.count != 0 {
+                self.fetchCharactersByName()
+            }else {
+                self.searchCharacter?.removeAll()
+                self.searchCharacter = nil
+            }
+        }
     }
+    
+    @Published var search: Bool = false {
+        didSet {
+            if self.searchText.count != 0 {
+                print("load")
+                self.fetchCharactersByName()
+            }else{
+                print("no text")
+                self.searchCharacter?.removeAll()
+                self.searchCharacter = nil
+            }
+        }
+    }
+    
+    
+    init() {
+        self.searchCharacter = nil
+        DispatchQueue.main.async {
+            self.fetchCharacters()
+            self.fetchCharactersByName()
+           
+        }
+    }
+    
+   
+    let columns: [GridItem] = [
+        GridItem(.flexible(), spacing: 36),
+        GridItem(.flexible(), spacing: 36),
+        GridItem(.flexible(), spacing: 36)
+    ]
     
     func fetchCharacters() {
         guard !isLoading && canLoadMorePages else {return}
@@ -47,7 +86,7 @@ class CharactersViewModel: ObservableObject {
         fetchCharacters()
     }
      
-    func fetchCharacter(by id: Int) {
+    func fetchCharacter(id: Int) {
         isLoading = true
         errorMessage = nil
         
@@ -58,11 +97,11 @@ class CharactersViewModel: ObservableObject {
             }
         }
     }
-    func fetchCharactersByName(by name: String){
+    func fetchCharactersByName(){
         isLoading = true
         errorMessage = nil
         
-        apiService.fecthCharacterName(characterName: name) { [weak self]  nameStartsWithResponse in
+        apiService.fecthCharacterName(characterName: self.searchText) { [weak self]  nameStartsWithResponse in
             DispatchQueue.main.async{
                 self?.nameStartsWithCharacters =  nameStartsWithResponse ?? []
                 self?.isLoading = false
