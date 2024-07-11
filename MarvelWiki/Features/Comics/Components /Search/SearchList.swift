@@ -54,22 +54,21 @@ struct SearchList: View {
                     Text("Search")
                         .foregroundStyle(Color("mClearGray"))
                         .frame(minWidth: UIScreen.main.bounds.width)
-                }else if searchModel.searchComics?.count == 0{
-                    Text("Click on Search")
+                }else if searchModel.total == -1 {
+                    Text("Not Found")
                         .foregroundStyle(Color("mClearGray"))
                         .frame(minWidth: UIScreen.main.bounds.width)
-                }else if searchModel.total == 0 {
-                    Text("Not Found")
+                }else if searchModel.searchComics?.count == 0 {
+                    Text("Click on Search")
                         .foregroundStyle(Color("mClearGray"))
                         .frame(minWidth: UIScreen.main.bounds.width)
                 }
                 Spacer()
             }
         }.padding(.top,5)
-        .onDisappear{
-            print("apagando array")
-            searchModel.searchComics?.removeAll()
-        }
+            .onDisappear{
+                searchModel.searchOffset = 0
+            }
     }
     private func filteredComics() -> [Comic] {
         let def = "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"

@@ -18,6 +18,7 @@ class SearchViewModel: ObservableObject {
     @Published var isSearchingComic: Bool = false {
         didSet {
             if self.searchText.count != 0 {
+                self.searchComics?.removeAll()
                 self.loadSearchComics()
             }else {
                 self.searchComics?.removeAll()
@@ -51,12 +52,16 @@ class SearchViewModel: ObservableObject {
                     let decoder = JSONDecoder()
                     let marvelResponse = try decoder.decode(MarvelResponse<Comic>.self, from: data)
                     self.searchComics?.append(contentsOf: marvelResponse.data?.results ?? [])
-                    self.total = marvelResponse.data?.total ?? 0
+                    
+                    let total = marvelResponse.data?.total ?? 0
+                    self.total = total == 0 ? -1 : total
                     self.searchOffset += self.limit
                     self.isLoading = false
                 } catch {
                     print("Erro ao decodificar JSON:", error.localizedDescription)
                     self.searchComics = []
+                    self.isLoading = false
+                    self.total = -1
                 }
             }
         }

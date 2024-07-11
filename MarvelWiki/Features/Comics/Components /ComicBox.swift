@@ -18,9 +18,10 @@ struct ComicBox: View {
     }
     
     var body: some View {
-        VStack{
-            if let url = URL(string: "\(comic.thumbnail.path)/\(size).\(ext)") {
-                AsyncImage(url: url) { image in
+        NavigationLink(destination: ComicDescription(comic: comic)){
+            VStack{
+                if let url = URL(string: "\(comic.thumbnail.path)/\(size).\(ext)") {
+                    AsyncImage(url: url) { image in
                         image
                             .resizable()
                             .scaledToFit()
@@ -31,11 +32,12 @@ struct ComicBox: View {
                             .frame(width: 100, height: 150, alignment: .center)
                     }
                 }
-            Text("\( formatTitle(title: comic.title ?? ""))")
-            .font(.custom("BentonSans Comp Black", size: 14))
-            .foregroundStyle(Color.white)
-            .lineLimit(1)
-            .truncationMode(.tail)
+                Text("\( formatTitle(title: comic.title ?? ""))")
+                    .font(.custom("BentonSans Comp Black", size: 14))
+                    .foregroundStyle(Color.white)
+                    .lineLimit(1)
+                    .truncationMode(.tail)
+            }
         }
         
     }
