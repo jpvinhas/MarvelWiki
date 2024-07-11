@@ -13,7 +13,8 @@ struct CarouselElementsHome: View {
     var primaryLink: PrimaryLink = PrimaryLink(link: "/erro", title: "Erro", content:[])
     var withBaseUrl: Bool
     var withTitles: Bool
-    @State var id: Int = 13860
+    //@StateObject private var comicsViewModel: ComicsViewModel = ComicsViewModel()
+    //@State var idComic: Int = 115440
     private var baseURL = "https://cdn.marvel.com/content/1x/"
     
     init(primaryLink: PrimaryLink, withBaseUrl: Bool, withTitles: Bool) {
@@ -36,7 +37,7 @@ struct CarouselElementsHome: View {
                             ForEach(0..<3) { subIndex in
                                 let card = primaryLink.content[index * 3 + subIndex]
                             
-                                NavigationLink(destination: ComicDescription( idComic: $id)) {
+                                NavigationLink(destination: CharacterDescription( character: nil)) {
                                     
                                     VStack{
                                         if let url = URL(string: (withBaseUrl ? baseURL : "") + card.image.filename) {
@@ -51,6 +52,8 @@ struct CarouselElementsHome: View {
                                                 .foregroundStyle(Color(.white))
                                         }
                                     }
+                                }.task{
+                                     //self.comicsViewModel.idComic = self.idComic
                                 }
                             }
                         }
