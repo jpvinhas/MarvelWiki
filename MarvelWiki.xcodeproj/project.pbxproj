@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2130D1562C36D2F30039D662 /* CharactersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2130D1552C36D2F30039D662 /* CharactersViewModel.swift */; };
+		216CC35A2C40034700EAD096 /* CharactersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216CC3592C40034700EAD096 /* CharactersList.swift */; };
 		7F165BCA2C3416370063A197 /* ApiServiceCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F165BC92C3416370063A197 /* ApiServiceCharacter.swift */; };
 		7F165BCC2C3416520063A197 /* ApiServiceComic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F165BCB2C3416520063A197 /* ApiServiceComic.swift */; };
 		7F165BCE2C341D590063A197 /* CardComicHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F165BCD2C341D590063A197 /* CardComicHome.swift */; };
@@ -54,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		2130D1552C36D2F30039D662 /* CharactersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModel.swift; sourceTree = "<group>"; };
+		216CC3592C40034700EAD096 /* CharactersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersList.swift; sourceTree = "<group>"; };
 		7F165BC92C3416370063A197 /* ApiServiceCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServiceCharacter.swift; sourceTree = "<group>"; };
 		7F165BCB2C3416520063A197 /* ApiServiceComic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServiceComic.swift; sourceTree = "<group>"; };
 		7F165BCD2C341D590063A197 /* CardComicHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardComicHome.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				8119344B2C358CAD000DF3B0 /* Components */,
 				815DE9C12C34198500690031 /* CharactersView.swift */,
 				2130D1552C36D2F30039D662 /* CharactersViewModel.swift */,
+				216CC3592C40034700EAD096 /* CharactersList.swift */,
 			);
 			path = Characters;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				7F40A3C82C33005000334860 /* ApiService.swift in Sources */,
 				7FEED5272C3C069F008C69B4 /* CarouselImage.swift in Sources */,
 				7F165BD92C3426050063A197 /* HeaderHome.swift in Sources */,
+				216CC35A2C40034700EAD096 /* CharactersList.swift in Sources */,
 				7F165BCA2C3416370063A197 /* ApiServiceCharacter.swift in Sources */,
 				81A7F1402C32F35600211625 /* Comic.swift in Sources */,
 				7F165BDB2C3427170063A197 /* PrimaryLink.swift in Sources */,
