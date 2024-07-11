@@ -59,9 +59,9 @@ class CharactersViewModel: ObservableObject {
     
     
     let columns: [GridItem] = [
-        GridItem(.flexible(), spacing: 36),
-        GridItem(.flexible(), spacing: 36),
-        GridItem(.flexible(), spacing: 36)
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible())
     ]
     
     func fetchCharacters() {
@@ -121,5 +121,7 @@ class CharactersViewModel: ObservableObject {
             }
         }
     }
+    
+    
     
 }

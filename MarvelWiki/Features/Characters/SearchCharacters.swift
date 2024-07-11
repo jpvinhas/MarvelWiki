@@ -43,6 +43,8 @@ struct SearchCharacters: View {
                 Spacer()
             }
         }.padding(.top,5)
+            .padding(.leading, 22)
+            .padding(.trailing, 22)
             .onDisappear{
                 print("apagando array")
                 charactersViewModel.searchCharacter?.removeAll()
