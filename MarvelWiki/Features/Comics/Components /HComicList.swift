@@ -22,18 +22,16 @@ struct HComicList: View {
                     .font(.custom("BentonSans Comp Black", size: 26))
                     .foregroundStyle(Color.white)
                 Spacer()
-                Button(action: {
-                    print("see all")
-                }, label: {
+                NavigationLink(destination: MoreComicsView(title: title)){
                     Text("See All")
                         .font(.custom("BentonSans Comp Black", size: 15))
                         .foregroundStyle(Color.white)
                         .opacity(0.5)
-                })
+                }.navigationBarBackButtonHidden(true)
             }
             .padding()
             .padding(.horizontal,12)
-            if comics != nil {
+            if comics?.count != 0 {
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: rows, alignment: .center) {
                         ForEach(comics ?? []) { comic in
