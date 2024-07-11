@@ -8,11 +8,46 @@
 import SwiftUI
 
 struct SearchCharacters: View {
+    
+    @EnvironmentObject var charactersViewModel : CharactersViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading){
+            if charactersViewModel.searchCharacter != nil && charactersViewModel.searchCharacter?.count != 0 {
+                ScrollView(.vertical, showsIndicators: false) {
+                    LazyVGrid(columns: charactersViewModel.columns, spacing: 20) {
+                        ForEach(charactersViewModel.searchCharacter ?? []) { character in
+                            CharacterBox(character: character)
+                        }
+                    }
+                }
+            }else {
+                Spacer()
+                if charactersViewModel.searchText.count == 0 {
+                    Text("Search")
+                        .foregroundStyle(Color("mClearGray"))
+                        .frame(minWidth: UIScreen.main.bounds.width)
+                }else if charactersViewModel.searchCharacter == nil {
+                    Text("Click on Search")
+                        .foregroundStyle(Color("mClearGray"))
+                        .frame(minWidth: UIScreen.main.bounds.width)
+                }else if charactersViewModel.searchCharacter?.count == 0 {
+                    Text("Not Found")
+                        .foregroundStyle(Color("mClearGray"))
+                        .frame(minWidth: UIScreen.main.bounds.width)
+                }else {
+                    ProgressView("Loading...")
+                        .foregroundStyle(Color("mClearGray"))
+                        .frame(minWidth: UIScreen.main.bounds.width)
+                }
+                Spacer()
+            }
+        }.padding(.top,5)
+            .onDisappear{
+                print("apagando array")
+                charactersViewModel.searchCharacter?.removeAll()
+        }
     }
 }
 
-#Preview {
-    SearchCharacters()
-}
+

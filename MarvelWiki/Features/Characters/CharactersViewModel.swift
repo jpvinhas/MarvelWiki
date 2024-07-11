@@ -4,7 +4,7 @@
 //
 //  Created by Ricardo Silva Vale on 04/07/24.
 //
-import Combine
+
 import Foundation
 import SwiftUI
 
@@ -12,7 +12,7 @@ class CharactersViewModel: ObservableObject {
     
     @Published var characters : [Character] = []
     @Published var character : Character?
-    @Published var nameStartsWithCharacters: [Character]? = []
+    @Published var nameStartsWithCharacters: [Character] = []
     @Published var searchCharacter: [Character]?
     @Published var searchText: String = ""
     @Published var isLoading = false
@@ -53,11 +53,11 @@ class CharactersViewModel: ObservableObject {
         DispatchQueue.main.async {
             self.fetchCharacters()
             self.fetchCharactersByName()
-           
+            
         }
     }
     
-   
+    
     let columns: [GridItem] = [
         GridItem(.flexible(), spacing: 36),
         GridItem(.flexible(), spacing: 36),
@@ -71,7 +71,7 @@ class CharactersViewModel: ObservableObject {
         
         apiService.getCharacters(page: currentPage){ [weak self] characters in
             DispatchQueue.main.async {
-              if !characters.isEmpty{
+                if !characters.isEmpty{
                     self?.characters.append(contentsOf: characters)
                     self?.currentPage += 1
                 } else {
@@ -85,7 +85,7 @@ class CharactersViewModel: ObservableObject {
     func fetchMoreCharacters(){
         fetchCharacters()
     }
-     
+    
     func fetchCharacter(id: Int) {
         isLoading = true
         errorMessage = nil
@@ -97,15 +97,27 @@ class CharactersViewModel: ObservableObject {
             }
         }
     }
+   
     func fetchCharactersByName(){
+        guard !searchText.isEmpty else {
+            self.searchCharacter = []
+            self.isLoading = false
+            return
+        }
+        
         isLoading = true
         errorMessage = nil
         
         apiService.fecthCharacterName(characterName: self.searchText) { [weak self]  nameStartsWithResponse in
-            DispatchQueue.main.async{
-                self?.nameStartsWithCharacters =  nameStartsWithResponse ?? []
-                self?.isLoading = false
-                
+            DispatchQueue.main.async {
+                guard let self = self else {return}
+                if let nameStartsWithResponse = nameStartsWithResponse {
+                    self.searchCharacter = nameStartsWithResponse
+                } else{
+                    self.searchCharacter = []
+                    self.errorMessage = "personagem não encontrado"
+                }
+                self.isLoading = false
             }
         }
     }

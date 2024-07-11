@@ -24,7 +24,7 @@ class ComicsViewModel: ObservableObject {
             }
         }
     }
-    @Published var search: Bool = false {
+    @Published var search: Bool = false{
         didSet {
             if self.searchText.count != 0 {
                 print("load")

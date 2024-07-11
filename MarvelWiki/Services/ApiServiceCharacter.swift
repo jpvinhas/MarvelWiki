@@ -90,11 +90,9 @@ class ApiServiceCharacter {
         
         URLSession.shared.dataTask(with: url){ (data, response, error) in
             guard let data = data else {return}
-            print(data)
             let characterNameResponse = try? JSONDecoder().decode(MarvelResponse<Character>.self, from: data)
             completion(characterNameResponse?.data?.results ?? [])
-            
-        }
+       }
         .resume()
         
         
