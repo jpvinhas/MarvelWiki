@@ -12,9 +12,11 @@ struct HomeDescription: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var newComicsModel = NewComicsViewModel()
     @State var card: CardHome
+    @State private var isFavorite : Bool = false
     var withBaseUrl: Bool
     var withRelated: Bool = false
     private var baseURL = "https://cdn.marvel.com/content/1x/"
+    
     
     init(card: CardHome, withBaseUrl: Bool, withRelated: Bool) {
         self.card = card
@@ -39,10 +41,10 @@ struct HomeDescription: View {
                         })
                         Spacer()
                         Button(action: {
-                            
+                            isFavorite.toggle()
                         }, label: {
                             HStack{
-                                Image(systemName: "heart")
+                                Image(systemName: isFavorite ? "heart.fill" : "heart" )
                                     .foregroundColor(Color("mClearGray"))
                                     .padding(.leading, 2)
                                     .font(.largeTitle)
@@ -70,9 +72,9 @@ struct HomeDescription: View {
                             .foregroundStyle(Color(.white))
                             .font(.custom("BentonSans Comp Black", size: 20))
                             .frame(width: 340)
-                            //.lineLimit(1)
                         Text(card.secondaryText ?? "")
                             .foregroundStyle(Color(.white))
+                            .font(.custom("Poppins-Light", size: 16))
                            
                     }.padding(7)
                     
@@ -85,16 +87,14 @@ struct HomeDescription: View {
                             .padding(.horizontal, 30)
                       
                         Text( card.description ?? "")
-                           
                             .foregroundStyle(Color(.white))
-                            .font(.system(size: 14))
-                            //.frame(maxWidth: 380)
                             .padding(.horizontal, 30)
+                            .font(.custom("Poppins-Light", size: 14))
                     
                         if withRelated{
                             Text(card.contentType == "comic_issue" ? "Characters" : "Comics")
                                 .foregroundStyle(Color(.white))
-                                .font(.custom("BentonSans Comp Black", size: 20))
+                                .font(.custom("BentonSans Comp Black", size: 26))
                                 .padding(.top)
                                 .padding(.horizontal, 30)
                         }else{
