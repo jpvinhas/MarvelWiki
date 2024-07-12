@@ -15,7 +15,8 @@ struct CharactersView: View {
                 }else{
                     CharactersList()
                         .environmentObject(viewModel)
-                }
+                 }
+                
             }.frame(maxWidth: .infinity)
                 .background(Color("mBackground"))
         }

@@ -20,25 +20,7 @@ struct CharactersList: View {
                     LazyVGrid(columns: viewModel.columns, spacing: 20) {
                         ForEach(viewModel.getFilteredCharacters()) { character in
                             VStack {
-                                if let url = URL(string: "\(character.thumbnail.path)/\(size).\(character.thumbnail.ext)") {
-                                    AsyncImage(url: url) { image in
-                                        image
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 100, height: 150)
-                                            .cornerRadius(10)
-                                    } placeholder: {
-                                        ProgressView()
-                                            .frame(width: 100, height: 150)
-                                            .cornerRadius(10)
-                                    }
-                                    Text(character.name)
-                                        .font(Font.custom("BentonSans Comp Black", size: 14))
-                                        .multilineTextAlignment(.center)
-                                        .frame(width: 100, height: 14)
-                                        .foregroundColor(.white)
-                                        .padding(.top, 3)
-                                }
+                                CharacterBox(character: character)
                             }
                             .onAppear {
                                 if character == viewModel.getFilteredCharacters().last {
@@ -64,7 +46,6 @@ struct CharactersList: View {
             .background(Color("mBackground"))
         }
     }
-    
 }
 
 #Preview {
