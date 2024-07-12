@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @State private var marvelResponse: MarvelResponse<Comic>?
+    //@State private var marvelResponse: MarvelResponse<Comic>?
     @State var searchText = ""
     @State var searchs = false
     @State var search = false
@@ -17,7 +17,6 @@ struct HomeView: View {
     var ext = "jpg"
     var size = "portrait_medium"
     @StateObject private var homeViewModel = HomeViewModel()
-  
 
     var body: some View {
         NavigationStack {
@@ -26,7 +25,6 @@ struct HomeView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 230, height: 62)
-                Spacer()
                 ScrollView{
                     VStack{
                         if !homeViewModel.primaryLinks.isEmpty{
@@ -46,6 +44,7 @@ struct HomeView: View {
                         else{
                             ProgressView("Loading...")
                                 .navigationTitle("Loading")
+                                .frame(maxWidth: .infinity)
                         }
                     }
                 }
