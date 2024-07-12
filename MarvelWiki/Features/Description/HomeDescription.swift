@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeDescription: View {
     
     @Environment(\.presentationMode) var presentationMode
-    //@StateObject private var comicsViewModel: ComicsViewModel = ComicsViewModel()
+    @StateObject var newComicsModel = NewComicsViewModel()
     @State var card: CardHome
     var withBaseUrl: Bool
     var withRelated: Bool = false
@@ -76,28 +76,34 @@ struct HomeDescription: View {
                            
                     }.padding(7)
                     
-                    VStack{
-                      
+                    VStack(alignment: .leading){
+                  
                         Text("Description")
                             .foregroundStyle(Color(.white))
-                            .font(.custom("BentonSans Comp Black", size: 20))
-                            
-                    }.padding()
-                    VStack(alignment: .leading){
+                            .font(.custom("BentonSans Comp Black", size: 26))
+                            .padding(.vertical, 10)
+                            .padding(.horizontal, 30)
+                      
                         Text( card.description ?? "")
                            
                             .foregroundStyle(Color(.white))
                             .font(.system(size: 14))
-                            .padding(.horizontal)
+                            //.frame(maxWidth: 380)
+                            .padding(.horizontal, 30)
+                    
+                        if withRelated{
+                            Text(card.contentType == "comic_issue" ? "Characters" : "Comics")
+                                .foregroundStyle(Color(.white))
+                                .font(.custom("BentonSans Comp Black", size: 20))
+                                .padding(.top)
+                                .padding(.horizontal, 30)
+                        }else{
+                            HComicList<NewComicsViewModel>(title: "New Comics", viewModel: newComicsModel)
+                        }
+                        
                     }
                    
-                    if withRelated{
-                        Text(card.contentType == "comic_issue" ? "Characters" : "Comics")
-                            .foregroundStyle(Color(.white))
-                            .font(.custom("BentonSans Comp Black", size: 20))
-                            .padding()
-                    }
-                    
+                   
                 }
             }
         }

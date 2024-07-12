@@ -18,7 +18,7 @@ class NewComicsViewModel: ObservableObject,ComicsModel {
     internal var limit = 20
     
     init() {
-        print("iniciando new viewmodel")
+        //print("iniciando new viewmodel")
         self.loadComics()
     }
     

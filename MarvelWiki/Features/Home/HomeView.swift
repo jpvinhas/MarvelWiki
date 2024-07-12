@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @State private var marvelResponse: MarvelResponse<Comic>?
+    //@State private var marvelResponse: MarvelResponse<Comic>?
     @State var searchText = ""
     @State var searchs = false
     @State var search = false
