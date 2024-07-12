@@ -10,14 +10,11 @@ import SwiftUI
 struct ComicDescriptionView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @State var isfavorite = false
     
-    var comic: Comic?
-    private var ext = "jpg"
-    private var size = "portrait_fantastic"
+    @ObservedObject var descriptionViewModel: ComicsDescriptionViewModel
     
     init(comic: Comic) {
-        self.comic = comic
+        self.descriptionViewModel = ComicsDescriptionViewModel(comic: comic)
     }
     
     var body: some View {
@@ -32,9 +29,9 @@ struct ComicDescriptionView: View {
                 }
                 Spacer()
                 Button {
-                    isfavorite.toggle()
+                    descriptionViewModel.isfavorite.toggle()
                 } label: {
-                    Image(systemName: isfavorite ? "heart.fill": "heart")
+                    Image(systemName: descriptionViewModel.isfavorite ? "heart.fill": "heart")
                         .font(.system(size: 35))
                         .foregroundColor(.white)
                 }
@@ -44,7 +41,7 @@ struct ComicDescriptionView: View {
                     HStack{
                         Spacer()
                         VStack{
-                            if let url = URL(string: "\(comic?.thumbnail.path ?? "")/\(size).\(ext)") {
+                            if let url = URL(string: "\(descriptionViewModel.comic.thumbnail.path)/\(descriptionViewModel.size).\(descriptionViewModel.ext)") {
                                 AsyncImage(url: url) { image in
                                     image
                                         .resizable()
@@ -57,12 +54,12 @@ struct ComicDescriptionView: View {
                                         .frame(width: 168, height: 252, alignment: .center)
                                 }
                             }
-                            Text("\(formatTitle(title: comic?.title ?? ""))")
+                            Text("\(formatTitle(title: descriptionViewModel.comic.title ?? ""))")
                                 .font(.custom("BentonSans Comp Black", size: 25))
                                 .foregroundColor(.white)
                                 .lineLimit(1)
                                 .padding(.top,5)
-                            Text("\(formatYear(title: comic?.modified ?? "No Year"))")
+                            Text("\(formatYear(title: descriptionViewModel.comic.modified ?? "No Year"))")
                                 .font(.custom("Poppins-Light", size: 16))
                                 .foregroundColor(.white)
                         }
@@ -75,13 +72,11 @@ struct ComicDescriptionView: View {
                             Text("WRITER:")
                                 .font(.custom("BentonSans Comp Black", size: 16))
                                 .foregroundColor(.white)
-                            if let items = getWriters() {
-                                //ForEach(items, id: \.self) { index in
-                                Text("\(items.first?.name ?? "Any writer" )")
-                                        .font(.custom("Poppins-Light", size: 14))
-                                        .foregroundColor(Color("mClearGray"))
-                               // }
-                            }
+                            let items = getWriters()
+                            Text("\(items.first?.name ?? "Any writer" )")
+                                    .font(.custom("Poppins-Light", size: 14))
+                                    .foregroundColor(Color("mClearGray"))
+                            
                         }
                         Spacer()
                         
@@ -89,40 +84,36 @@ struct ComicDescriptionView: View {
                             Text("PENCILLER:")
                                 .font(.custom("BentonSans Comp Black", size: 16))
                                 .foregroundColor(.white)
-                            if let items = getPencilers() {
-                                ForEach(items, id: \.self) { index in
-                                    Text("\(index.name)")
-                                        .font(.custom("Poppins-Light", size: 14))
-                                        .foregroundColor(Color("mClearGray"))
-                                }
-                            }
+                            let items = getPencilers()
+                            Text("\(items.first?.name ?? "Any penciler" )")
+                                    .font(.custom("Poppins-Light", size: 14))
+                                    .foregroundColor(Color("mClearGray"))
                         }
                     }.padding(.top)
                     HStack {
-                        Text("\(comic?.description ?? "")")
+                        Text("\(descriptionViewModel.comic.description ?? "")")
                             .frame(maxWidth: .infinity)
                             .font(.custom("Poppins-Light", size: 14))
                             .foregroundColor(Color("mClearGray"))
                     }
                     .padding(.top,5)
-                    
                 }
                 .padding(.horizontal,30)
         }.background(Color("mBackground"))
         .navigationBarBackButtonHidden(true)
+        .onAppear{
+            print("carregando descricao")
+            descriptionViewModel.getCharactersByComic()
+        }
     }
-    private func getPencilers() -> [Comic.Creators.Creator]? {
-       guard let items = comic?.creators.items else {
-           return nil
-       }
-       return items.filter { $0.role.contains("penciler") }
-   }
-    private func getWriters() -> [Comic.Creators.Creator]? {
-       guard let items = comic?.creators.items else {
-           return nil
-       }
-       return items.filter { $0.role.contains("writer") }
-   }
+    private func getPencilers() -> [Comic.Creators.Creator] {
+        return descriptionViewModel.comic.creators.items.filter { $0.role.contains("penciler") }
+    }
+
+    private func getWriters() -> [Comic.Creators.Creator] {
+        return descriptionViewModel.comic.creators.items.filter { $0.role.contains("writer") }
+    }
+
     func formatTitle(title: String) -> String {
         let components = title.components(separatedBy: " (")
 

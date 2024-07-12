@@ -78,4 +78,20 @@ class ApiServiceComic{
             }
         }.resume()
     }
+    func getCharactersByComic(id: Int, offset: Int, completion: @escaping (_ data: Data) -> Void){
+        print("get coharacters by comic")
+        let urlString = "\(baseURL)\(urlComics)/\(id)/characters?offset=\(offset)&ts=\(timesTamp)&apikey=\(apikey)&hash=\(hash)"
+        let url = URL(string: urlString)
+        guard let url = url else {return}
+        print(url)
+        
+        var requestHeader = URLRequest(url: url)
+        requestHeader.httpMethod = "GET"
+      
+        URLSession.shared.dataTask(with: requestHeader) { data, _, _ in
+          if let data = data {
+              completion(data)
+          }
+        }.resume()
+    }
 }

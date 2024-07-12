@@ -31,6 +31,7 @@
 		811934532C358D23000DF3B0 /* ComicBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811934522C358D23000DF3B0 /* ComicBox.swift */; };
 		811934552C35BF3E000DF3B0 /* ComicsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811934542C35BF3E000DF3B0 /* ComicsList.swift */; };
 		812578F22C35C68300F40D9B /* CarroselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812578F12C35C68300F40D9B /* CarroselView.swift */; };
+		812F71512C41485D00892773 /* ComicDescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812F71502C41485D00892773 /* ComicDescriptionViewModel.swift */; };
 		813D02832C3FFBDE009CF042 /* HCharactersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813D02822C3FFBDE009CF042 /* HCharactersList.swift */; };
 		814C26522C3C289600EA4F3B /* MoreComicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814C26512C3C289600EA4F3B /* MoreComicsView.swift */; };
 		814D68D72C380F7B003EAC3A /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814D68D62C380F7B003EAC3A /* ResponseModel.swift */; };
@@ -83,6 +84,7 @@
 		811934522C358D23000DF3B0 /* ComicBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicBox.swift; sourceTree = "<group>"; };
 		811934542C35BF3E000DF3B0 /* ComicsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsList.swift; sourceTree = "<group>"; };
 		812578F12C35C68300F40D9B /* CarroselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarroselView.swift; sourceTree = "<group>"; };
+		812F71502C41485D00892773 /* ComicDescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDescriptionViewModel.swift; sourceTree = "<group>"; };
 		813D02822C3FFBDE009CF042 /* HCharactersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCharactersList.swift; sourceTree = "<group>"; };
 		814C26512C3C289600EA4F3B /* MoreComicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreComicsView.swift; sourceTree = "<group>"; };
 		814D68D62C380F7B003EAC3A /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
@@ -262,8 +264,9 @@
 				812F714F2C4142AE00892773 /* Models */,
 				8119344A2C358C3F000DF3B0 /* Components  */,
 				815DE9C32C34199500690031 /* ComicsView.swift */,
-				817A8E902C3D6F28008103B4 /* ComicDescriptionView.swift */,
 				814C26512C3C289600EA4F3B /* MoreComicsView.swift */,
+				817A8E902C3D6F28008103B4 /* ComicDescriptionView.swift */,
+				812F71502C41485D00892773 /* ComicDescriptionViewModel.swift */,
 			);
 			path = Comics;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				7F40A3C82C33005000334860 /* ApiService.swift in Sources */,
 				7FEED5272C3C069F008C69B4 /* CarouselImage.swift in Sources */,
 				81B6AF4F2C4030120052A354 /* NewComicsViewModel.swift in Sources */,
+				812F71512C41485D00892773 /* ComicDescriptionViewModel.swift in Sources */,
 				7F165BD92C3426050063A197 /* HeaderHome.swift in Sources */,
 				216CC35A2C40034700EAD096 /* CharactersList.swift in Sources */,
 				814C26522C3C289600EA4F3B /* MoreComicsView.swift in Sources */,
