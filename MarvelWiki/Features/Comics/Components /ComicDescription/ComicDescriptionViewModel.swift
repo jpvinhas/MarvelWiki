@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class ComicsDescriptionViewModel: ObservableObject {
     
@@ -30,7 +31,7 @@ class ComicsDescriptionViewModel: ObservableObject {
     func getCharactersByComic() {
         isLoading = true
         
-        apiService.getCharactersByComic(id: 1930, offset: offset) { [weak self] data in
+        apiService.getCharactersByComic(id: comic.id, offset: offset) { [weak self] data in
             guard let self = self else { return }
             
             DispatchQueue.main.async {
@@ -43,7 +44,7 @@ class ComicsDescriptionViewModel: ObservableObject {
                     }
                     self.characters.append(contentsOf: uniqueNewCharacters)
                     let total = marvelResponse.data?.total ?? 0
-                    self.available = total == 0 ? -1 : total
+                    self.available = total
                     self.offset += self.limit
                     self.isLoading = false
                 } catch {
