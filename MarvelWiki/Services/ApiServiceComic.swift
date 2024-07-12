@@ -34,7 +34,7 @@ class ApiServiceComic{
     }
     
     func getComicsByName(tileStartsWith: String,offset: Int, completion: @escaping (_ data: Data) -> Void){
-          
+        print("get comics by name")
         let urlString = "\(baseURL)\(urlComics)?titleStartsWith=\(tileStartsWith)&offset=\(offset)&ts=\(timesTamp)&apikey=\(apikey)&hash=\(hash)"
         let url = URL(string: urlString)
         guard let url = url else {return}
@@ -49,7 +49,7 @@ class ApiServiceComic{
         }.resume()
     }
     func getComicsByYear(startYear: Int,offset: Int, completion: @escaping (_ data: Data) -> Void){
-          
+        print("get comics by year")
         let urlString = "\(baseURL)\(urlComics)?startYear=\(startYear)&limit=\(limit)&offset=\(offset)&ts=\(timesTamp)&apikey=\(apikey)&hash=\(hash)"
         let url = URL(string: urlString)
         guard let url = url else {return}
@@ -64,10 +64,10 @@ class ApiServiceComic{
         }.resume()
     }
     func getComics(offset: Int, completion: @escaping (_ data: Data) -> Void) {
+        print("get all comics")
         let urlString = "\(baseURL)\(urlComics)?limit=\(limit)&offset=\(offset)&ts=\(timesTamp)&apikey=\(apikey)&hash=\(hash)"
         let url = URL(string: urlString)
         guard let url = url else { return }
-        print(url)
         
         var requestHeader = URLRequest(url: url)
         requestHeader.httpMethod = "GET"

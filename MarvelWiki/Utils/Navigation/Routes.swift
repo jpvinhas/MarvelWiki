@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Routes: View {
     @State private var selectedTab: TabIcon = .Home
-    @StateObject var comicsViewModel = ComicsViewModel()
+    
     var body: some View {
         VStack {
             Spacer()
@@ -18,7 +18,6 @@ struct Routes: View {
                 HomeView()
             case .Comics:
                 ComicsView()
-                    .environmentObject(comicsViewModel)
             case .Characters:
                 CharactersView()
             case .Favorite:
