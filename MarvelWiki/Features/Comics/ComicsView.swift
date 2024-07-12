@@ -9,23 +9,23 @@ import SwiftUI
 
 struct ComicsView: View {
     
-    @EnvironmentObject var comicsViewModel: ComicsViewModel
-    @StateObject var searchModel: SearchViewModel = SearchViewModel()
-    
+    @StateObject var searchModel = SearchViewModel()
+    @StateObject var allComicsModel = ComicsViewModel()
+    @StateObject var newComicsModel = NewComicsViewModel()
     var body: some View {
         NavigationStack{
             VStack {
                 MarvelWikiSearchBar(searchText: $searchModel.searchText, isSearching: $searchModel.isSearchingComic, search: $searchModel.search)
                     .padding(.top,0)
                 if searchModel.isSearchingComic {
-                    SearchList(searchModel: searchModel)
+                    ComicsList(viewModel: searchModel)
                     Spacer()
                 }else{
                     ScrollView{
                         CarroselView()
                             .padding(.top)
-                        HComicList(title: "New Comics",comics: comicsViewModel.newComics)
-                        HComicList(title: "All Comics",comics: comicsViewModel.comics)
+                        HComicList<NewComicsViewModel>(title: "New Comics",viewModel: newComicsModel)
+                        HComicList<ComicsViewModel>(title: "All Comics",viewModel: allComicsModel)
                     }
                 }
             }.background(Color("mBackground"))

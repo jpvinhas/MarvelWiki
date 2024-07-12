@@ -18,7 +18,7 @@ struct ComicBox: View {
     }
     
     var body: some View {
-        NavigationLink(destination: ComicDescription(comic: comic)){
+        NavigationLink(destination: ComicDescriptionView(comic: comic)){
             VStack{
                 if let url = URL(string: "\(comic.thumbnail.path)/\(size).\(ext)") {
                     AsyncImage(url: url) { image in

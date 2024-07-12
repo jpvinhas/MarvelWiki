@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct MoreComicsView: View {
+struct MoreComicsView<T: ComicsModel>: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var viewModel: ComicsViewModel
+    @ObservedObject var viewModel: T
 
     var title: String?
     
@@ -32,16 +32,11 @@ struct MoreComicsView: View {
                 Spacer()
             }
             .padding(30)
-            ComicsList(comics: title == "New Comics" ? $viewModel.newComics : $viewModel.comics, moreAction: title == "New Comics" ? viewModel.loadNewComics : viewModel.loadComics)
+            ComicsList(viewModel: viewModel)
                 .onDisappear{
-                    if title == "New Comics" {
-                        viewModel.newComics?.removeSubrange(20..<viewModel.newOffset)
-                        viewModel.newOffset = viewModel.limit
-                    }else {
-                        let size = viewModel.comics?.count ?? 20
-                        viewModel.comics?.removeSubrange(20..<size)
-                        viewModel.allOffset = viewModel.limit
-                    }
+                    let size = viewModel.comics.count
+                    viewModel.comics.removeSubrange(20..<size)
+                    viewModel.offset = viewModel.limit
                 }
         }
         .background(Color("mBackground"))

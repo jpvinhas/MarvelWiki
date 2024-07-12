@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ComicDescription: View {
+struct ComicDescriptionView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @State var isfavorite = false
