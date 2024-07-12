@@ -37,7 +37,7 @@ struct CarouselElementsHome: View {
                             ForEach(0..<3) { subIndex in
                                 let card = primaryLink.content[index * 3 + subIndex]
                             
-                                NavigationLink(destination: CharacterDescription( character: nil)) {
+                                NavigationLink(destination: HomeDescription(card: card, withBaseUrl: withBaseUrl, withRelated: true)) {
                                     
                                     VStack{
                                         if let url = URL(string: (withBaseUrl ? baseURL : "") + card.image.filename) {
@@ -52,8 +52,6 @@ struct CarouselElementsHome: View {
                                                 .foregroundStyle(Color(.white))
                                         }
                                     }
-                                }.task{
-                                     //self.comicsViewModel.idComic = self.idComic
                                 }
                             }
                         }

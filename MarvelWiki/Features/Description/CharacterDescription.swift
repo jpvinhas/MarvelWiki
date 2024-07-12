@@ -106,7 +106,8 @@ struct CharacterDescription_Previews: PreviewProvider {
     static var previews: some View {
         let character: Character = Character(id: 1009327, name: "Jean Grey",
             description: "A SYMBIOTIC FREE-FOR-ALL! Freshly united and teamed up, VENOM and TOXIN fight like hell to save one of the Marvel Universe's greatest heroes from the darkness within her.",
-            thumbnail: Character.Thumbnail(path: "http://i.annihil.us/u/prod/marvel/i/mg/f/d0/528d3412090b4", ext: "jpg"), resourceURI: "", comics: Character.Comics(available: 0, collectionURI: "", items: [], returned: 0), urls: [])
+            thumbnail: Character.Thumbnail(path: "http://i.annihil.us/u/prod/marvel/i/mg/f/d0/528d3412090b4", 
+                                           ext: "jpg"), resourceURI: "", modified: Date.now, comics: Character.Comics(available: 0, collectionURI: "", items: [], returned: 0), urls: [])
         CharacterDescription(character: character)
     }
 }

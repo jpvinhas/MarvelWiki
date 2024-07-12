@@ -25,7 +25,6 @@ struct HomeView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 230, height: 62)
-                Spacer()
                 ScrollView{
                     VStack{
                         if !homeViewModel.primaryLinks.isEmpty{
@@ -45,6 +44,7 @@ struct HomeView: View {
                         else{
                             ProgressView("Loading...")
                                 .navigationTitle("Loading")
+                                .frame(maxWidth: .infinity)
                         }
                     }
                 }

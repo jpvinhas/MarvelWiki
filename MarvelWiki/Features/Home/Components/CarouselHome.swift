@@ -27,15 +27,17 @@ struct CarouselHome: View{
                         
                         HStack{
                             
-                            let card1 = primaryLink.content[index]
-                            
-                            VStack{
+                            let card = primaryLink.content[index]
+                            NavigationLink(destination: HomeDescription(card: card, withBaseUrl: true, withRelated: false)) {
                                 
-                                if let url = URL(string: "https://cdn.marvel.com/content/1x/" + card1.image.filename) {
-                                    URLImageTop(url)
-                                }else{
-                                    ProgressView("Loading...")
-                                        .navigationTitle("Loading")
+                                VStack{
+                                    
+                                    if let url = URL(string: "https://cdn.marvel.com/content/1x/" + card.image.filename) {
+                                        URLImageTop(url)
+                                    }else{
+                                        ProgressView("Loading...")
+                                            .navigationTitle("Loading")
+                                    }
                                 }
                             }
                             
