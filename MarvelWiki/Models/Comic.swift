@@ -14,9 +14,15 @@ struct Comic: Identifiable, Codable {
     var modified: String?
     var pageCount: Int?
     var resourceURI: String?
+    var urls: [Url]
     var thumbnail: Thumbnail
     var creators: Creators
     var characters: Characters
+    
+    struct Url: Codable {
+        var type: String
+        var url: String
+    }
     
     struct Thumbnail: Codable {
         var path: String
@@ -53,6 +59,7 @@ struct Comic: Identifiable, Codable {
         case modified
         case pageCount
         case resourceURI
+        case urls
         case thumbnail
         case creators
         case characters

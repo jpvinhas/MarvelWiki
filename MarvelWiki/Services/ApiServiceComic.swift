@@ -22,8 +22,8 @@ class ApiServiceComic{
 
     private init() {
        self.timesTamp = "\(Int(Date().timeIntervalSince1970))"
-       self.apikey = "94e11007ccd3554185532827d0ad1bcc"
-       self.privateKey = "6ccfec6ddc0702f56dc1e4b6c32fcb3e4e5deb76"
+       self.apikey = "cf240964f461c3bed5535b5c1ff1a186"
+       self.privateKey = "6bd46fcbd061efa307bbbeedeca78aaaeb4330a5"
        self.hash = ApiServiceComic.generateMD5Hash(timestamp: self.timesTamp, privateKey: self.privateKey, publicKey: self.apikey)
     }
 
@@ -79,7 +79,7 @@ class ApiServiceComic{
         }.resume()
     }
     func getCharactersByComic(id: Int, offset: Int, completion: @escaping (_ data: Data) -> Void){
-        print("get coharacters by comic")
+        print("get characters by comic")
         let urlString = "\(baseURL)\(urlComics)/\(id)/characters?offset=\(offset)&ts=\(timesTamp)&apikey=\(apikey)&hash=\(hash)"
         let url = URL(string: urlString)
         guard let url = url else {return}

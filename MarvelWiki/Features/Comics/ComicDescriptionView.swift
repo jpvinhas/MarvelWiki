@@ -38,6 +38,7 @@ struct ComicDescriptionView: View {
             }.padding(.horizontal,30)
             
             ScrollView(.vertical){
+                VStack {
                     HStack{
                         Spacer()
                         VStack{
@@ -74,8 +75,8 @@ struct ComicDescriptionView: View {
                                 .foregroundColor(.white)
                             let items = getWriters()
                             Text("\(items.first?.name ?? "Any writer" )")
-                                    .font(.custom("Poppins-Light", size: 14))
-                                    .foregroundColor(Color("mClearGray"))
+                                .font(.custom("Poppins-Light", size: 14))
+                                .foregroundColor(Color("mClearGray"))
                             
                         }
                         Spacer()
@@ -86,8 +87,8 @@ struct ComicDescriptionView: View {
                                 .foregroundColor(.white)
                             let items = getPencilers()
                             Text("\(items.first?.name ?? "Any penciler" )")
-                                    .font(.custom("Poppins-Light", size: 14))
-                                    .foregroundColor(Color("mClearGray"))
+                                .font(.custom("Poppins-Light", size: 14))
+                                .foregroundColor(Color("mClearGray"))
                         }
                     }.padding(.top)
                     HStack {
@@ -97,14 +98,37 @@ struct ComicDescriptionView: View {
                             .foregroundColor(Color("mClearGray"))
                     }
                     .padding(.top,5)
+                }.padding(.horizontal,30)
+                if descriptionViewModel.available != 0 {
+                    HCharactersList(viewModel: descriptionViewModel)
                 }
-                .padding(.horizontal,30)
-        }.background(Color("mBackground"))
+                if let url = getUrl().first?.url{
+                    NavigationLink(destination: LoadingWebView(url: URL(string: url)!)) {
+                        HStack {
+                            Text("Open More Details")
+                                .font(.custom("Poppins-Regular", size: 16))
+                                .foregroundColor(.white)
+                            Image(systemName: "chevron.right")
+                                .font(.system(size: 16))
+                                .foregroundColor(.white)
+                        }
+                        .padding()
+                        .background(Color("mRed"))
+                        .cornerRadius(10)
+                    }.padding()
+                }
+            }
+        }
+        .background(Color("mBackground"))
         .navigationBarBackButtonHidden(true)
         .onAppear{
             print("carregando descricao")
+            print(descriptionViewModel.comic.urls)
             descriptionViewModel.getCharactersByComic()
         }
+    }
+    private func getUrl() -> [Comic.Url] {
+        return descriptionViewModel.comic.urls.filter { $0.type.contains("detail") }
     }
     private func getPencilers() -> [Comic.Creators.Creator] {
         return descriptionViewModel.comic.creators.items.filter { $0.role.contains("penciler") }
