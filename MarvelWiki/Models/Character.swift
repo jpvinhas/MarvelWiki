@@ -14,7 +14,7 @@ struct Character: Identifiable, Codable, Equatable {
     var description: String
     var thumbnail: Thumbnail
     var resourceURI: String
-    var modified: Date?
+    var modified: String?
     var comics: Comics
     var urls: [URLItem]
 
