@@ -11,6 +11,7 @@ struct Comic: Identifiable, Codable {
     var id: Int?
     var title: String?
     var description: String?
+    var modified: String?
     var pageCount: Int?
     var resourceURI: String?
     var thumbnail: Thumbnail
@@ -27,7 +28,7 @@ struct Comic: Identifiable, Codable {
         let items: [Creator]
         let returned: Int
         
-        struct Creator: Codable {
+        struct Creator: Codable,Hashable {
             let resourceURI: String
             let name: String
             let role: String
@@ -49,6 +50,7 @@ struct Comic: Identifiable, Codable {
         case id
         case title
         case description
+        case modified
         case pageCount
         case resourceURI
         case thumbnail

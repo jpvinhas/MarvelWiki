@@ -18,32 +18,34 @@ struct ComicBox: View {
     }
     
     var body: some View {
-        VStack{
-            if let url = URL(string: "\(comic.thumbnail.path)/\(size).\(ext)") {
-                AsyncImage(url: url) { image in
+        NavigationLink(destination: ComicDescriptionView(comic: comic)){
+            VStack{
+                if let url = URL(string: "\(comic.thumbnail.path)/\(size).\(ext)") {
+                    AsyncImage(url: url) { image in
                         image
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 100, height: 150).cornerRadius(10)
-                } placeholder: {
-                    ProgressView()
-                        .frame(width: 100, height: 150, alignment: .center)
+                            .frame(width: 100, height: 150)
+                            .cornerRadius(10)
+                    } placeholder: {
+                        ProgressView()
+                            .frame(width: 100, height: 150, alignment: .center)
+                    }
                 }
+                Text("\( formatTitle(title: comic.title ?? ""))")
+                    .font(.custom("BentonSans Comp Black", size: 14))
+                    .foregroundStyle(Color.white)
+                    .lineLimit(1)
+                    .truncationMode(.tail)
             }
-            Text("\( formatTitle(title: comic.title ?? ""))")
-                .font(.custom("BentonSans Comp Black", size: 14))
-                .foregroundStyle(Color.white)
-                .lineLimit(1)
-                .truncationMode(.tail)
         }
+        
     }
     func formatTitle(title: String) -> String {
         let components = title.components(separatedBy: " (")
 
         let formatedtitle = components[0].trimmingCharacters(in: .whitespaces)
 
-        //let year = components[1].components(separatedBy: ")")[0]
-        
         return formatedtitle
     }
 }

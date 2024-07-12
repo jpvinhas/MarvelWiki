@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct HComicList: View {
+struct HComicList<T: ComicsModel>: View {
     private let rows: [GridItem] = [
         GridItem(.flexible(), spacing: 36),
     ]
     var title: String?
-    var comics: [Comic]?
+    @ObservedObject var viewModel: T
     var def = "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
     
     var body: some View {
@@ -22,21 +22,19 @@ struct HComicList: View {
                     .font(.custom("BentonSans Comp Black", size: 26))
                     .foregroundStyle(Color.white)
                 Spacer()
-                Button(action: {
-                    print("see all")
-                }, label: {
+                NavigationLink(destination: MoreComicsView<T>(viewModel: viewModel)){
                     Text("See All")
                         .font(.custom("BentonSans Comp Black", size: 15))
                         .foregroundStyle(Color.white)
                         .opacity(0.5)
-                })
+                }.navigationBarBackButtonHidden(true)
             }
             .padding()
             .padding(.horizontal,12)
-            if comics != nil {
+            if viewModel.comics.count != 0 {
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: rows, alignment: .center) {
-                        ForEach(comics ?? []) { comic in
+                        ForEach(viewModel.comics) { comic in
                             if comic.thumbnail.path != def {
                                 ComicBox(comic: comic)
                                     .frame(maxWidth: 100)
