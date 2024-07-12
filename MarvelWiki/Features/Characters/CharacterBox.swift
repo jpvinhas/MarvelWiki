@@ -20,28 +20,29 @@ struct CharacterBox: View {
         self.character = character
     }
     var body: some View {
-        VStack {
-            if let url = URL(string: "\(character.thumbnail.path)/\(size).\(character.thumbnail.ext)") {
-                AsyncImage(url: url) { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 100, height: 150)
-                        .cornerRadius(10)
-                } placeholder: {
-                    ProgressView()
-                        .frame(width: 100, height: 150)
-                        .cornerRadius(10)
+        NavigationLink(destination: CharacterDescription(character: character)){
+            VStack {
+                if let url = URL(string: "\(character.thumbnail.path)/\(size).\(character.thumbnail.ext)") {
+                    AsyncImage(url: url) { image in
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 100, height: 150)
+                            .cornerRadius(10)
+                    } placeholder: {
+                        ProgressView()
+                            .frame(width: 100, height: 150)
+                            .cornerRadius(10)
+                    }
+                    Text(character.name)
+                        .font(Font.custom("BentonSans Comp Black", size: 14))
+                        .multilineTextAlignment(.center)
+                        .frame(width: 100, height: 14)
+                        .foregroundColor(.white)
+                        .padding(.top, 3)
                 }
-                Text(character.name)
-                    .font(Font.custom("BentonSans Comp Black", size: 14))
-                    .multilineTextAlignment(.center)
-                    .frame(width: 100, height: 14)
-                    .foregroundColor(.white)
-                    .padding(.top, 3)
             }
         }
-        
     }
 }
 

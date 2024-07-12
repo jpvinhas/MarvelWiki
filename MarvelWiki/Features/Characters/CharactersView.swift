@@ -5,7 +5,7 @@ struct CharactersView: View {
     @StateObject private var viewModel = CharactersViewModel ()
     
    var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 MarvelWikiSearchBar(searchText: $viewModel.searchText, isSearching: $viewModel.isSearchingCharacter, search: $viewModel.search)
                 Spacer()

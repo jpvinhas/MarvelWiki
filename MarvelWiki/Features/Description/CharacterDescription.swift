@@ -40,7 +40,7 @@ struct CharacterDescription: View {
                             })
                         }
                         if let urlImage = character?.thumbnail.path {
-                            AsyncImage(url: URL(string:  (urlImage) + "." + (character?.thumbnail.ext ?? "jpg") )){ image in
+                            AsyncImage(url: URL(string:  (urlImage) + "/portrait_fantastic." + (character?.thumbnail.ext ?? "jpg") )){ image in
                                 image
                                     .resizable()
                                     .scaledToFit()
@@ -61,16 +61,19 @@ struct CharacterDescription: View {
                             .font(.custom("BentonSans Comp Black", size: 20))
                             .padding(5)
                         VStack(alignment: .leading){
-                            Text("Description")
-                                .foregroundStyle(Color(.white))
-                                .font(.custom("BentonSans Comp Black", size: 26))
-                                .padding(.vertical, 10)
-                                .padding(.horizontal, 30)
-                          
-                            Text(character?.description ?? "")
-                                .foregroundStyle(Color(.white))
-                                .padding(.horizontal, 30)
-                                .font(.custom("Poppins-Light", size: 14))
+                            if character?.description.count != 0{
+                                Text("Description")
+                                    .foregroundStyle(Color(.white))
+                                    .font(.custom("BentonSans Comp Black", size: 26))
+                                    .padding(.vertical, 10)
+                                    .padding(.horizontal, 30)
+                              
+                                Text(character?.description ?? "")
+                                    .foregroundStyle(Color(.white))
+                                    .padding(.horizontal, 30)
+                                    .font(.custom("Poppins-Light", size: 14))
+                            }
+                           
                             Text("Comics")
                                 .foregroundStyle(Color(.white))
                                 .font(.custom("BentonSans Comp Black", size: 26))
