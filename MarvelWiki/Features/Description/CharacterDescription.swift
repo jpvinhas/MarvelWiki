@@ -12,7 +12,14 @@ struct CharacterDescription: View {
     @Environment(\.presentationMode) private var presentationMode
     @State var isFavorite: Bool = false
     var character: Character?
+    
+    @ObservedObject var descriptionViewModel: CharactersDescriptionViewModel
    
+    init(character: Character){
+        self.character = character
+        self.descriptionViewModel = CharactersDescriptionViewModel(character: character)
+    }
+    
     var body: some View {
         NavigationStack{
             if character != nil{
@@ -74,14 +81,12 @@ struct CharacterDescription: View {
                                     .font(.custom("Poppins-Light", size: 14))
                             }
                            
-                            Text("Comics")
-                                .foregroundStyle(Color(.white))
-                                .font(.custom("BentonSans Comp Black", size: 26))
-                                .padding(.top)
-                                .padding(.horizontal, 30)
-                            
+                            if descriptionViewModel.available != 0{
+                                HComicsList(viewModel: descriptionViewModel)
+                            }
                         }
                     }
+                  
                    
                 } .background(Color("mBackground"))
                 
@@ -90,6 +95,9 @@ struct CharacterDescription: View {
                 ProgressView()
             }
         }.navigationBarBackButtonHidden(true)
+            .onAppear{
+            descriptionViewModel.getComicsByCharacter()
+        }
     }
     
     func formatYear(title: String) -> String {

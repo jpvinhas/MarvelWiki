@@ -94,12 +94,26 @@ class ApiServiceCharacter {
             completion(characterNameResponse?.data?.results ?? [])
        }
         .resume()
-        
-        
-        
-          
     }
     
+    func getComicsByCharacter(id: Int, offset: Int, completion: @escaping (_ data: Data) -> Void){
+        let queryTs = URLQueryItem(name: "ts", value: timesTamp)
+        let queryApikey = URLQueryItem(name: "apikey", value: apikey)
+        let queryHash = URLQueryItem(name: "hash", value: hash)
+        let queryOffset = URLQueryItem(name: "offset", value: "\(offset)")
+        
+        let characterURLString = "\(baseURL)/\(id)/comics"
+        
+        var url = URL(string: characterURLString)
+        url?.append(queryItems: [queryTs, queryApikey, queryHash, queryOffset])
+        guard let url = url else {return}
+        
+        URLSession.shared.dataTask(with: url) { data, _, _ in
+              if let data = data {
+                  completion(data)
+              }
+        }.resume()
+    }
         
     
 }
