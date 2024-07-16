@@ -91,15 +91,7 @@ struct HomeDescription: View {
                             .padding(.horizontal, 30)
                             .font(.custom("Poppins-Light", size: 14))
                     
-                        if withRelated{
-                            Text(card.contentType == "comic_issue" ? "Characters" : "Comics")
-                                .foregroundStyle(Color(.white))
-                                .font(.custom("BentonSans Comp Black", size: 26))
-                                .padding(.top)
-                                .padding(.horizontal, 30)
-                        }else{
-                            HComicList<NewComicsViewModel>(title: "New Comics", viewModel: newComicsModel)
-                        }
+                        HComicList<NewComicsViewModel>(title: "New Comics", viewModel: newComicsModel)
                         
                     }
                    
