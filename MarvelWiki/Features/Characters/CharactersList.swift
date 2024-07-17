@@ -11,8 +11,7 @@ struct CharactersList: View {
     @EnvironmentObject private var viewModel: CharactersViewModel
     
     var size = "portrait_medium"
-    // private let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
-    
+   
     var body: some View {
         NavigationView {
             VStack {
