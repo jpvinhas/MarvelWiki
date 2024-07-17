@@ -16,6 +16,9 @@ struct CharacterBox: View {
         "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
     ]
     
+    @State private var isImageLoaded = false
+    @State private var isTextLoaded = false
+    
     init(character: Character) {
         self.character = character
     }
@@ -24,25 +27,55 @@ struct CharacterBox: View {
             VStack {
                 if let url = URL(string: "\(character.thumbnail.path)/\(size).\(character.thumbnail.ext)") {
                     AsyncImage(url: url) { image in
-                        image
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 100, height: 150)
-                            .cornerRadius(10)
-                    } placeholder: {
-                        ProgressView()
-                            .frame(width: 100, height: 150)
-                            .cornerRadius(10)
+                        switch image {
+                        case .empty:
+                            ShimmerEffectBox()
+                                .frame(width: 100, height: 150)
+                                .cornerRadius(10)
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 150)
+                                .cornerRadius(10)
+                                .onAppear {
+                                    isImageLoaded = true
+                                }
+                        case .failure:
+                            Image(systemName: "xmark.octagon")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 150)
+                                .cornerRadius(10)
+                        @unknown default:
+                            EmptyView()
+                        }
                     }
+                } else {
+                    ShimmerEffectBox()
+                        .frame(width: 100, height: 150)
+                        .cornerRadius(10)
+                }
+                
+                if isImageLoaded {
                     Text(character.name)
                         .font(Font.custom("BentonSans Comp Black", size: 14))
                         .multilineTextAlignment(.center)
                         .frame(width: 100, height: 14)
                         .foregroundColor(.white)
                         .padding(.top, 3)
+                        .onAppear {
+                            isTextLoaded = true
+                        }
+                    
+                } else {
+                    ShimmerEffectBox()
+                        .frame(width: 100, height: 14)
+                        .cornerRadius(3)
                 }
             }
         }
     }
 }
+
 

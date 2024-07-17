@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2130D1562C36D2F30039D662 /* CharactersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2130D1552C36D2F30039D662 /* CharactersViewModel.swift */; };
+		213CA54E2C47E1ED0010FC4F /* ShimmerEffectBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213CA54D2C47E1ED0010FC4F /* ShimmerEffectBox.swift */; };
 		216CC35A2C40034700EAD096 /* CharactersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216CC3592C40034700EAD096 /* CharactersList.swift */; };
 		216CC3602C40283100EAD096 /* CharacterBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216CC35F2C40283100EAD096 /* CharacterBox.swift */; };
 		216CC3622C4029B200EAD096 /* SearchCharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216CC3612C4029B200EAD096 /* SearchCharacters.swift */; };
@@ -69,6 +70,7 @@
 
 /* Begin PBXFileReference section */
 		2130D1552C36D2F30039D662 /* CharactersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModel.swift; sourceTree = "<group>"; };
+		213CA54D2C47E1ED0010FC4F /* ShimmerEffectBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerEffectBox.swift; sourceTree = "<group>"; };
 		216CC3592C40034700EAD096 /* CharactersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersList.swift; sourceTree = "<group>"; };
 		216CC35F2C40283100EAD096 /* CharacterBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterBox.swift; sourceTree = "<group>"; };
 		216CC3612C4029B200EAD096 /* SearchCharacters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCharacters.swift; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 			isa = PBXGroup;
 			children = (
 				81F911E62C34478900F6C47D /* MarvelWikiSearchBar.swift */,
+				213CA54D2C47E1ED0010FC4F /* ShimmerEffectBox.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -537,6 +540,7 @@
 				812F71532C416F5B00892773 /* ComicWebView.swift in Sources */,
 				811528852C3701AE00C3D233 /* HComicList.swift in Sources */,
 				817A8E912C3D6F28008103B4 /* ComicDescriptionView.swift in Sources */,
+				213CA54E2C47E1ED0010FC4F /* ShimmerEffectBox.swift in Sources */,
 				814D68D72C380F7B003EAC3A /* ResponseModel.swift in Sources */,
 				815DE9C42C34199500690031 /* ComicsView.swift in Sources */,
 				815DE9D02C3425FA00690031 /* TabBarView.swift in Sources */,
@@ -692,6 +696,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MarvelWiki/Preview Content\"";
+				DEVELOPMENT_TEAM = 94QMJZ58ZW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MarvelWiki/Info.plist;
@@ -705,7 +710,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = marvelwiki.MarvelWiki;
+				PRODUCT_BUNDLE_IDENTIFIER = marvelwiki.MarvelWiki1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -721,6 +726,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MarvelWiki/Preview Content\"";
+				DEVELOPMENT_TEAM = 94QMJZ58ZW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MarvelWiki/Info.plist;
@@ -734,7 +740,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = marvelwiki.MarvelWiki;
+				PRODUCT_BUNDLE_IDENTIFIER = marvelwiki.MarvelWiki1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
