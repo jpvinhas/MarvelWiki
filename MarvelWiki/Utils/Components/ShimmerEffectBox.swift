@@ -10,7 +10,7 @@ struct ShimmerEffectBox: View {
     @State private var isAnimating  = false
     private var gradientColors = [
         Color(.tabBlue),
-        Color(red: 105 / 255, green: 105 / 255, blue: 143 / 255, opacity: 255),
+        Color(.cleaBlue),
         Color(.tabBlue)
     ]
     
