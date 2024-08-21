@@ -35,7 +35,7 @@ struct MoreComicsView<T: ComicsModel>: View {
             ComicsList(viewModel: viewModel)
                 .onDisappear{
                     let size = viewModel.comics.count
-                    viewModel.comics.removeSubrange(20..<size)
+                    viewModel.comics.removeSubrange(10..<size)
                     viewModel.offset = viewModel.limit
                 }
         }

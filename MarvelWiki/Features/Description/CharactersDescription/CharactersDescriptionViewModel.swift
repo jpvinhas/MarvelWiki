@@ -19,7 +19,7 @@ class CharactersDescriptionViewModel: ObservableObject {
     @Published var available: Int = 0
     
     internal var offset = 0
-    internal var limit  = 20
+    internal var limit  = 10
     
     init(character: Character){
         self.character = character
@@ -27,7 +27,6 @@ class CharactersDescriptionViewModel: ObservableObject {
     
     func getComicsByCharacter(){
         isLoading = true
-        
         
         apiServiceCharacter.getComicsByCharacter(id: character.id, offset: offset){ [weak self] data in
             guard let self = self else { return }

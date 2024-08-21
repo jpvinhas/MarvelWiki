@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CharacterBox: View {
-    @StateObject private var viewModel = CharactersViewModel()
+    
     var character: Character
     var size = "portrait_medium"
     var notLoad = [

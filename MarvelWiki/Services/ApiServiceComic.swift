@@ -17,7 +17,7 @@ class ApiServiceComic{
     private let hash: String
     private let baseURL: String = "https://gateway.marvel.com:443"
     private let urlComics: String = "/v1/public/comics"
-    private let limit: Int = 20
+    private let limit: Int = 10
     private let startYear: Int = 2024
 
     private init() {
@@ -48,36 +48,56 @@ class ApiServiceComic{
           }
         }.resume()
     }
-    func getComicsByYear(startYear: Int,offset: Int, completion: @escaping (_ data: Data) -> Void){
+    func getComicsByYear(startYear: Int, offset: Int, completion: @escaping (_ data: Data) -> Void) {
         print("get comics by year")
+
         let urlString = "\(baseURL)\(urlComics)?startYear=\(startYear)&limit=\(limit)&offset=\(offset)&ts=\(timesTamp)&apikey=\(apikey)&hash=\(hash)"
-        let url = URL(string: urlString)
-        guard let url = url else {return}
+        guard let url = URL(string: urlString) else { return }
         
         var requestHeader = URLRequest(url: url)
         requestHeader.httpMethod = "GET"
-      
-        URLSession.shared.dataTask(with: requestHeader) { data, _, _ in
-          if let data = data {
-              completion(data)
-          }
-        }.resume()
+        requestHeader.timeoutInterval = 120
+        
+        func performRequest(retries: Int) {
+            URLSession.shared.dataTask(with: requestHeader) { data, _, error in
+                if let error = error as NSError?, error.code == NSURLErrorTimedOut, retries > 0 {
+                    performRequest(retries: retries - 1) // Retry the request
+                } else {
+                    if let data = data {
+                      completion(data)
+                  }
+                }
+            }.resume()
+        }
+        
+        performRequest(retries: 3) // Try up to 3 times
     }
     func getComics(offset: Int, completion: @escaping (_ data: Data) -> Void) {
         print("get all comics")
         let urlString = "\(baseURL)\(urlComics)?limit=\(limit)&offset=\(offset)&ts=\(timesTamp)&apikey=\(apikey)&hash=\(hash)"
-        let url = URL(string: urlString)
-        guard let url = url else { return }
+        guard let url = URL(string: urlString) else { return }
         
         var requestHeader = URLRequest(url: url)
         requestHeader.httpMethod = "GET"
-        
-        URLSession.shared.dataTask(with: requestHeader) { data, _, _ in
-            if let data = data {
-                completion(data)
-            }
-        }.resume()
+        requestHeader.timeoutInterval = 120 // Aumentar o tempo limite, se necessário
+
+        func performRequest(retries: Int) {
+            URLSession.shared.dataTask(with: requestHeader) { data, _, error in
+                if let error = error as NSError?, error.code == NSURLErrorTimedOut || error.code == NSURLErrorNetworkConnectionLost, retries > 0 {
+                    DispatchQueue.global().asyncAfter(deadline: .now() + .seconds(2)) {
+                        performRequest(retries: retries - 1) // Retry after a delay
+                    }
+                } else {
+                    if let data = data {
+                        completion(data)
+                    }
+                }
+            }.resume()
+        }
+
+        performRequest(retries: 3) // Tenta até 3 vezes em caso de timeout
     }
+
     func getCharactersByComic(id: Int, offset: Int, completion: @escaping (_ data: Data) -> Void){
         print("get characters by comic")
         let urlString = "\(baseURL)\(urlComics)/\(id)/characters?offset=\(offset)&ts=\(timesTamp)&apikey=\(apikey)&hash=\(hash)"

@@ -16,7 +16,8 @@ class ApiServiceCharacter {
     private let hash = "577688d4b287d1393f4c3103644aa1f3"
     private let baseURL: String = "https://gateway.marvel.com:443/v1/public/characters"
     
-    func getCharacters (page: Int = 0, limit: Int = 20, completion: @escaping (_ charactersResponse: [Character])  -> Void ){
+    func getCharacters (page: Int = 0, limit: Int = 10, completion: @escaping (_ charactersResponse: [Character])  -> Void ){
+        print("getting characters")
         let queryTs = URLQueryItem(name: "ts", value: timesTamp)
         let queryApikey = URLQueryItem(name: "apikey", value: apikey)
         let queryHash = URLQueryItem(name: "hash", value: hash)
@@ -34,7 +35,6 @@ class ApiServiceCharacter {
                 let charactersResponse = try jsonDecoder.decode(MarvelResponse<Character>.self, from: data)
                 if let results =  charactersResponse.data?.results{
                     completion(results)
-                    
                 }else {
                     completion([])
                 }
@@ -42,15 +42,14 @@ class ApiServiceCharacter {
             } catch {
                 print("Error decoding JSON: \(error)")
             }
-            
         }
-            
         .resume()
-       
-        }
+    }
         
     
     func getCharacterId (characterId: Int, completion: @escaping  (_ characterIdResponse: Character?) -> Void){
+        
+        print("getting character by id")
         let queryTs = URLQueryItem(name: "ts", value: timesTamp)
         let queryApikey = URLQueryItem(name: "apikey", value: apikey)
         let queryHash = URLQueryItem(name: "hash", value: hash)

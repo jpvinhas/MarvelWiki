@@ -10,8 +10,9 @@ import SwiftUI
 struct ComicsView: View {
     
     @StateObject var searchModel = SearchViewModel()
-    @StateObject var allComicsModel = ComicsViewModel()
-    @StateObject var newComicsModel = NewComicsViewModel()
+    @StateObject var allComicsModel = ComicsViewModel.shared
+    @StateObject var newComicsModel = NewComicsViewModel.shared
+    
     var body: some View {
         NavigationStack{
             VStack {
@@ -21,7 +22,7 @@ struct ComicsView: View {
                     ComicsList(viewModel: searchModel)
                     Spacer()
                 }else{
-                    ScrollView{
+                    ScrollView(.vertical,showsIndicators: false){
                         CarroselView()
                             .padding(.top)
                         HComicList<NewComicsViewModel>(title: "New Comics",viewModel: newComicsModel)

@@ -9,8 +9,8 @@ import SwiftUI
 
 struct SearchCharacters: View {
     
-    @EnvironmentObject var charactersViewModel : CharactersViewModel
-    
+    @EnvironmentObject var charactersViewModel: CharactersViewModel
+
     var body: some View {
         VStack(alignment: .leading){
             if !charactersViewModel.searchCharacter.isEmpty {

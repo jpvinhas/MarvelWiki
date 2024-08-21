@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct CharactersList: View {
-    @EnvironmentObject private var viewModel: CharactersViewModel
-    
+   
+    @EnvironmentObject var viewModel: CharactersViewModel
+
     var size = "portrait_medium"
    
     var body: some View {
@@ -38,16 +39,8 @@ struct CharactersList: View {
                     }
                 }
             }
-            .onAppear {
-                viewModel.fetchCharacters()
-            }
             .frame(maxWidth: .infinity)
             .background(Color("mBackground"))
         }
     }
-}
-
-#Preview {
-    CharactersList()
-        .environmentObject(CharactersViewModel())
 }

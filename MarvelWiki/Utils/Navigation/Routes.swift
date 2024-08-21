@@ -8,24 +8,15 @@
 import SwiftUI
 
 struct Routes: View {
-    @State private var selectedTab: TabIcon = .Home
     
+    @StateObject private var coordinator = Coordinator()
+        
     var body: some View {
         VStack {
             Spacer()
-            switch selectedTab {
-            case .Home:
-                HomeView()
-            case .Comics:
-                ComicsView()
-            case .Characters:
-                CharactersView()
-            case .Favorite:
-                Text("FavoriteView")
-                    .foregroundStyle(Color("mClearGray"))
-            }
+            coordinator.currentView()
             Spacer()
-            TabBarView(selectedTab: $selectedTab)
+            TabBarView(selectedTab: $coordinator.selectedTab)
         }
         .edgesIgnoringSafeArea(.bottom)
         .background(Color("mBackground"))

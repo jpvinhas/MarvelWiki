@@ -123,7 +123,6 @@ struct ComicDescriptionView: View {
         .navigationBarBackButtonHidden(true)
         .onAppear{
             print("carregando descricao")
-            print(descriptionViewModel.comic.urls)
             descriptionViewModel.getCharactersByComic()
         }
     }

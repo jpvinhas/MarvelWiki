@@ -10,12 +10,15 @@ import SwiftUI
 
 class CharactersViewModel: ObservableObject {
     
+    static let shared = CharactersViewModel()
+    
     @Published var characters : [Character] = []
     @Published var character : Character?
     @Published var nameStartsWithCharacters: [Character] = []
     @Published var searchCharacter: [Character] = []
     @Published var searchText: String = ""
     @Published var isLoading = false
+    @Published var isInitLoading: Bool = true
     
     private var canLoadMorePages = true
     private var currentPage = 0
@@ -28,9 +31,9 @@ class CharactersViewModel: ObservableObject {
         "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
     ]
     
-    @Published var isSearchingCharacter: Bool = false{
+    @Published var isSearchingCharacter: Bool = false {
         didSet {
-            if self.searchText.count != 0 {
+            if !self.searchText.isEmpty && self.isSearchingCharacter{
                 self.fetchCharactersByName()
             }else {
                 self.searchCharacter.removeAll()
@@ -40,7 +43,7 @@ class CharactersViewModel: ObservableObject {
     
     @Published var search: Bool = false {
         didSet {
-            if self.searchText.count != 0 {
+            if !self.searchText.isEmpty {
                 print("load")
                 self.fetchCharactersByName()
             }else{
@@ -51,11 +54,10 @@ class CharactersViewModel: ObservableObject {
     }
     
     
-    init() {
+    private init() {
         DispatchQueue.main.async {
             self.fetchCharacters()
             self.fetchCharactersByName()
-            
         }
     }
     
@@ -67,9 +69,9 @@ class CharactersViewModel: ObservableObject {
     ]
     
     func fetchCharacters() {
-        guard !isLoading && canLoadMorePages else {return}
-        isLoading = true
-        errorMessage = nil
+        guard !self.isLoading && self.canLoadMorePages else {return}
+        self.isLoading = true
+        self.errorMessage = nil
         
         apiService.getCharacters(page: currentPage){ [weak self] characters in
             DispatchQueue.main.async {
@@ -80,17 +82,21 @@ class CharactersViewModel: ObservableObject {
                     self?.canLoadMorePages = false
                 }
                 self?.isLoading = false
+                if(self!.isInitLoading){
+                    self?.isInitLoading.toggle()
+                }
+                print("ok!")
             }
         }
     }
     
     func fetchMoreCharacters(){
-        fetchCharacters()
+        self.fetchCharacters()
     }
     
     func fetchCharacter(id: Int) {
-        isLoading = true
-        errorMessage = nil
+        self.isLoading = true
+        self.errorMessage = nil
         
         apiService.getCharacterId(characterId: id) { [weak self] character in
             DispatchQueue.main.async {
@@ -106,9 +112,10 @@ class CharactersViewModel: ObservableObject {
             self.isLoading = false
             return
         }
+        print("feching characters by name")
         
-        isLoading = true
-        errorMessage = nil
+        self.isLoading = true
+        self.errorMessage = nil
         
         apiService.fecthCharacterName(characterName: self.searchText) { [weak self]  nameStartsWithResponse in
             DispatchQueue.main.async {

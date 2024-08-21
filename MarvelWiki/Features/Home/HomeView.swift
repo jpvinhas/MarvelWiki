@@ -42,9 +42,7 @@ struct HomeView: View {
                             
                         }
                         else{
-                            ProgressView("Loading...")
-                                .navigationTitle("Loading")
-                                .frame(maxWidth: .infinity)
+                            LoadingHomeView()
                         }
                     }
                 }

@@ -7,18 +7,20 @@
 
 import Foundation
 
-class NewComicsViewModel: ObservableObject,ComicsModel {
+@Observable
+class NewComicsViewModel: ComicsModel {
     
+    static let shared = NewComicsViewModel()
     private let apiService = ApiServiceComic.singleton
 
-    @Published var comics: [Comic] = []
-    @Published var isLoading: Bool = false
-    @Published var available: Int = 0
+    var comics: [Comic] = []
+    var isLoading: Bool = false
+    var available: Int = 0
     internal var offset = 0
-    internal var limit = 20
+    internal var limit = 10
     
     init() {
-        //print("iniciando new viewmodel")
+        print("iniciando new viewmodel")
         self.loadComics()
     }
     

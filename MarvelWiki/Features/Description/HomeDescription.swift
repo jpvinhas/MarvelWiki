@@ -10,7 +10,6 @@ import SwiftUI
 struct HomeDescription: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @StateObject var newComicsModel = NewComicsViewModel()
     @State var card: CardHome
     @State private var isFavorite : Bool = false
     var withBaseUrl: Bool
@@ -90,8 +89,6 @@ struct HomeDescription: View {
                             .foregroundStyle(Color(.white))
                             .padding(.horizontal, 30)
                             .font(.custom("Poppins-Light", size: 14))
-                    
-                        HComicList<NewComicsViewModel>(title: "New Comics", viewModel: newComicsModel)
                         
                     }
                    

@@ -44,11 +44,16 @@ struct HComicList<T: ComicsModel>: View {
                     .padding(.horizontal,30)
                 }.frame(minHeight: 0)
             }else {
-                Spacer()
-                ProgressView()
-                    .foregroundStyle(Color("mClearGray"))
-                    .frame(minWidth: 390,minHeight: 160)
-                Spacer()
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(alignment: .center) {
+                        LoadingComicBox()
+                        LoadingComicBox()
+                        LoadingComicBox()
+                        LoadingComicBox()
+                        LoadingComicBox()
+                    }
+                    .padding(.horizontal,30)
+                }.frame(minHeight: 0)
             }
         }
     }
