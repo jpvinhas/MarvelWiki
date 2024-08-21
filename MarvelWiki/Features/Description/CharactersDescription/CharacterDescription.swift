@@ -37,26 +37,19 @@ struct CharacterDescription: View {
                                 }.padding()
                             })
                             Spacer()
-                            Button(action: {isFavorite.toggle()}, label: {
-                                HStack{
-                                    Image(systemName: isFavorite ? "heart.fill" : "heart" )
-                                        .foregroundColor(Color("mClearGray"))
-                                        .padding(.leading, 2)
-                                        .font(.largeTitle)
-                                }.padding()
-                            })
+                            
                         }
                         if let urlImage = character?.thumbnail.path {
                             AsyncImage(url: URL(string:  (urlImage) + "/portrait_fantastic." + (character?.thumbnail.ext ?? "jpg") )){ image in
                                 image
                                     .resizable()
                                     .scaledToFit()
-                                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                                    .shadow(color: .gray, radius: 10)
-                                    .frame(maxWidth: 160)
-                                    
-                            }placeholder: {
+                                    .frame(width: 168, height: 252)
+                                    .cornerRadius(10)
+                                    .shadow(color: .gray, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                            } placeholder: {
                                 ProgressView()
+                                    .frame(width: 168, height: 252, alignment: .center)
                             }
                             .padding(.top, -30)
                         }else{

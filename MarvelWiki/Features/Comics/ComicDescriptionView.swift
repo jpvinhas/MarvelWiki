@@ -29,9 +29,9 @@ struct ComicDescriptionView: View {
                 }
                 Spacer()
                 Button {
-                    descriptionViewModel.isfavorite.toggle()
+                    descriptionViewModel.toggleFavorite()
                 } label: {
-                    Image(systemName: descriptionViewModel.isfavorite ? "heart.fill": "heart")
+                    Image(systemName: descriptionViewModel.isFavorite ? "heart.fill": "heart")
                         .font(.system(size: 35))
                         .foregroundColor(.white)
                 }

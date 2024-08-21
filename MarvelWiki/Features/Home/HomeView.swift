@@ -46,7 +46,9 @@ struct HomeView: View {
                         }
                     }
                 }
-            }.background(Color("mBackground"))
+            }
+            .frame(maxWidth: .infinity)
+            .background(Color("mBackground"))
         }
     }
     

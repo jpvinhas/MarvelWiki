@@ -39,16 +39,7 @@ struct HomeDescription: View {
                             }.padding()
                         })
                         Spacer()
-                        Button(action: {
-                            isFavorite.toggle()
-                        }, label: {
-                            HStack{
-                                Image(systemName: isFavorite ? "heart.fill" : "heart" )
-                                    .foregroundColor(Color("mClearGray"))
-                                    .padding(.leading, 2)
-                                    .font(.largeTitle)
-                            }.padding()
-                        })
+                        
                     }
                     if (card.image.filename) != "" {
                         AsyncImage(url: URL(string:  (withBaseUrl ? baseURL : "") + (card.image.filename)) ){ image in

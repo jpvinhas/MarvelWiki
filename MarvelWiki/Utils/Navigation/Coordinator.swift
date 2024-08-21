@@ -15,6 +15,7 @@ class Coordinator: ObservableObject {
     private(set) var homeView = HomeView()
     private(set) var comicsView = ComicsView()
     private(set) var charactersView = CharactersView()
+    private(set) var favoritesView = FavoritesView()
     
     // Método para alterar a aba selecionada
     func selectTab(_ tab: TabIcon) {
@@ -31,7 +32,7 @@ class Coordinator: ObservableObject {
         case .Characters:
             return AnyView(charactersView)
         case .Favorite:
-            return AnyView(Text("FavoriteView")
+            return AnyView(favoritesView
                 .foregroundStyle(Color("mClearGray")))
         }
     }

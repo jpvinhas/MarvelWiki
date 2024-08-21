@@ -9,6 +9,9 @@ import SwiftUI
 
 @main
 struct MarvelWikiApp: App {
+    
+    let persistenceController = PersistenceController.shared
+    
     var body: some Scene {
         WindowGroup {
             Routes()

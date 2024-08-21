@@ -69,6 +69,11 @@
 		81B6AF4F2C4030120052A354 /* NewComicsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B6AF4E2C4030120052A354 /* NewComicsViewModel.swift */; };
 		81B6AF512C4034130052A354 /* ComicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B6AF502C4034130052A354 /* ComicsModel.swift */; };
 		81F911E72C34478900F6C47D /* MarvelWikiSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F911E62C34478900F6C47D /* MarvelWikiSearchBar.swift */; };
+		F6BDD5EC2C764F590083C8EE /* MarvelWiki.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F6BDD5EA2C764F590083C8EE /* MarvelWiki.xcdatamodeld */; };
+		F6BDD5EE2C764F730083C8EE /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BDD5ED2C764F730083C8EE /* Persistence.swift */; };
+		F6BDD5F12C7651140083C8EE /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BDD5F02C7651140083C8EE /* FavoritesViewModel.swift */; };
+		F6BDD5F32C7651280083C8EE /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BDD5F22C7651280083C8EE /* FavoritesView.swift */; };
+		F6BDD5F62C76594F0083C8EE /* ComicEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BDD5F52C76594F0083C8EE /* ComicEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -136,6 +141,11 @@
 		81B6AF4E2C4030120052A354 /* NewComicsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewComicsViewModel.swift; sourceTree = "<group>"; };
 		81B6AF502C4034130052A354 /* ComicsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsModel.swift; sourceTree = "<group>"; };
 		81F911E62C34478900F6C47D /* MarvelWikiSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelWikiSearchBar.swift; sourceTree = "<group>"; };
+		F6BDD5EB2C764F590083C8EE /* MarvelWiki.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MarvelWiki.xcdatamodel; sourceTree = "<group>"; };
+		F6BDD5ED2C764F730083C8EE /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		F6BDD5F02C7651140083C8EE /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		F6BDD5F22C7651280083C8EE /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		F6BDD5F52C76594F0083C8EE /* ComicEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,6 +364,7 @@
 		81A7F12B2C32F35600211625 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				F6BDD5EF2C7650F90083C8EE /* Favorites */,
 				81A7F1252C32F35600211625 /* Characters */,
 				81A7F1262C32F35600211625 /* Comics */,
 				81A7F1272C32F35600211625 /* Description */,
@@ -388,6 +399,7 @@
 				7F40A3C72C33005000334860 /* ApiService.swift */,
 				7F165BC92C3416370063A197 /* ApiServiceCharacter.swift */,
 				7F165BCB2C3416520063A197 /* ApiServiceComic.swift */,
+				F6BDD5ED2C764F730083C8EE /* Persistence.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -439,8 +451,27 @@
 				81A7F12B2C32F35600211625 /* Features */,
 				81A7F1302C32F35600211625 /* Preview Content */,
 				81A7F1312C32F35600211625 /* Services */,
+				F6BDD5F42C76591E0083C8EE /* CoreData */,
+				F6BDD5EA2C764F590083C8EE /* MarvelWiki.xcdatamodeld */,
 			);
 			path = MarvelWiki;
+			sourceTree = "<group>";
+		};
+		F6BDD5EF2C7650F90083C8EE /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				F6BDD5F22C7651280083C8EE /* FavoritesView.swift */,
+				F6BDD5F02C7651140083C8EE /* FavoritesViewModel.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		F6BDD5F42C76591E0083C8EE /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				F6BDD5F52C76594F0083C8EE /* ComicEntity.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -523,9 +554,11 @@
 				812578F22C35C68300F40D9B /* CarroselView.swift in Sources */,
 				811934552C35BF3E000DF3B0 /* ComicsList.swift in Sources */,
 				81B6AF512C4034130052A354 /* ComicsModel.swift in Sources */,
+				F6BDD5F12C7651140083C8EE /* FavoritesViewModel.swift in Sources */,
 				7FC23EE92C453EE700EE3A2F /* CharactersDescriptionViewModel.swift in Sources */,
 				7F165BD72C3424EA0063A197 /* ResponseHome.swift in Sources */,
 				8115287D2C36BCDB00C3D233 /* CarroselBox.swift in Sources */,
+				F6BDD5EE2C764F730083C8EE /* Persistence.swift in Sources */,
 				81A7F1382C32F35600211625 /* MarvelWikiApp.swift in Sources */,
 				813D02832C3FFBDE009CF042 /* HCharactersList.swift in Sources */,
 				7F40A3C82C33005000334860 /* ApiService.swift in Sources */,
@@ -535,6 +568,7 @@
 				812F71512C41485D00892773 /* ComicDescriptionViewModel.swift in Sources */,
 				7F165BD92C3426050063A197 /* HeaderHome.swift in Sources */,
 				81007D212C76168B009FB90B /* Coordinator.swift in Sources */,
+				F6BDD5F32C7651280083C8EE /* FavoritesView.swift in Sources */,
 				216CC3622C4029B200EAD096 /* SearchCharacters.swift in Sources */,
 				216CC3602C40283100EAD096 /* CharacterBox.swift in Sources */,
 				216CC35A2C40034700EAD096 /* CharactersList.swift in Sources */,
@@ -548,6 +582,7 @@
 				7F4812852C4023B3001B044D /* CharacterDescription.swift in Sources */,
 				815BB51B2C76217D006902D9 /* LoadingComicBox.swift in Sources */,
 				7FAA3FF52C40398400A0B3B2 /* HomeDescription.swift in Sources */,
+				F6BDD5F62C76594F0083C8EE /* ComicEntity.swift in Sources */,
 				812F71532C416F5B00892773 /* ComicWebView.swift in Sources */,
 				811528852C3701AE00C3D233 /* HComicList.swift in Sources */,
 				815BB51D2C7622E9006902D9 /* LoadingCharactersView.swift in Sources */,
@@ -572,6 +607,7 @@
 				815DE9CC2C341A5A00690031 /* Routes.swift in Sources */,
 				817D807B2C3EBB310047E64A /* SearchViewModel.swift in Sources */,
 				81A7F1412C32F35600211625 /* ContentView.swift in Sources */,
+				F6BDD5EC2C764F590083C8EE /* MarvelWiki.xcdatamodeld in Sources */,
 				811934532C358D23000DF3B0 /* ComicBox.swift in Sources */,
 				81A7F13F2C32F35600211625 /* Character.swift in Sources */,
 				7FEED5292C3C0AE4008C69B4 /* CarouselImageTop.swift in Sources */,
@@ -782,6 +818,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F6BDD5EA2C764F590083C8EE /* MarvelWiki.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F6BDD5EB2C764F590083C8EE /* MarvelWiki.xcdatamodel */,
+			);
+			currentVersion = F6BDD5EB2C764F590083C8EE /* MarvelWiki.xcdatamodel */;
+			name = MarvelWiki.xcdatamodeld;
+			path = /Users/jpvinhas/Desktop/MarvelWiki/MarvelWiki/MarvelWiki.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 81A7F0D72C32F25700211625 /* Project object */;
 }

@@ -15,7 +15,7 @@ class ComicsDescriptionViewModel: ObservableObject {
     @Published var comic: Comic
     @Published var characters: [Character] = []
     
-    @Published var isfavorite = false
+    @Published var isFavorite = false
     @Published var isLoading: Bool = false
     @Published var available: Int = 0
     internal var offset = 0
@@ -26,6 +26,9 @@ class ComicsDescriptionViewModel: ObservableObject {
     
     init(comic: Comic) {
         self.comic = comic
+        
+        let favorites = FavoritesViewModel.shared
+        self.isFavorite = favorites.favoriteComics.contains(comic)
     }
     
     func getCharactersByComic() {
@@ -53,5 +56,18 @@ class ComicsDescriptionViewModel: ObservableObject {
             }
         }
     }
+    
+    func toggleFavorite() {
+        let favorites = FavoritesViewModel.shared
+        
+        if let index = favorites.favoriteComics.firstIndex(of: comic) {
+            favorites.deleteComic(comic)
+            isFavorite = false
+        } else {
+            favorites.saveComic(comic)
+            isFavorite = true
+        }
+    }
+
     
 }

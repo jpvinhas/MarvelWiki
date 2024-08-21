@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import CoreData
 
-struct Comic: Identifiable, Codable {
+struct Comic: Identifiable, Codable, Equatable {
     var id: Int
     var title: String?
     var description: String?
@@ -63,5 +64,8 @@ struct Comic: Identifiable, Codable {
         case thumbnail
         case creators
         case characters
+    }
+    static func ==(lhs: Comic, rhs: Comic) -> Bool {
+        return lhs.id == rhs.id
     }
 }
