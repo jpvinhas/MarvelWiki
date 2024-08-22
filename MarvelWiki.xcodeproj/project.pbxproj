@@ -68,8 +68,8 @@
 		81A7F1412C32F35600211625 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A7F12F2C32F35600211625 /* ContentView.swift */; };
 		81B6AF4F2C4030120052A354 /* NewComicsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B6AF4E2C4030120052A354 /* NewComicsViewModel.swift */; };
 		81B6AF512C4034130052A354 /* ComicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B6AF502C4034130052A354 /* ComicsModel.swift */; };
+		81D277452C77675400B72398 /* MarvelWiki.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 81D277432C77675400B72398 /* MarvelWiki.xcdatamodeld */; };
 		81F911E72C34478900F6C47D /* MarvelWikiSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F911E62C34478900F6C47D /* MarvelWikiSearchBar.swift */; };
-		F6BDD5EC2C764F590083C8EE /* MarvelWiki.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F6BDD5EA2C764F590083C8EE /* MarvelWiki.xcdatamodeld */; };
 		F6BDD5EE2C764F730083C8EE /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BDD5ED2C764F730083C8EE /* Persistence.swift */; };
 		F6BDD5F12C7651140083C8EE /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BDD5F02C7651140083C8EE /* FavoritesViewModel.swift */; };
 		F6BDD5F32C7651280083C8EE /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BDD5F22C7651280083C8EE /* FavoritesView.swift */; };
@@ -140,8 +140,8 @@
 		81A7F1432C32F54100211625 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		81B6AF4E2C4030120052A354 /* NewComicsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewComicsViewModel.swift; sourceTree = "<group>"; };
 		81B6AF502C4034130052A354 /* ComicsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsModel.swift; sourceTree = "<group>"; };
+		81D277442C77675400B72398 /* MarvelWiki.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MarvelWiki.xcdatamodel; sourceTree = "<group>"; };
 		81F911E62C34478900F6C47D /* MarvelWikiSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelWikiSearchBar.swift; sourceTree = "<group>"; };
-		F6BDD5EB2C764F590083C8EE /* MarvelWiki.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MarvelWiki.xcdatamodel; sourceTree = "<group>"; };
 		F6BDD5ED2C764F730083C8EE /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		F6BDD5F02C7651140083C8EE /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		F6BDD5F22C7651280083C8EE /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
@@ -444,6 +444,7 @@
 			isa = PBXGroup;
 			children = (
 				81A7F1432C32F54100211625 /* Info.plist */,
+				81D277432C77675400B72398 /* MarvelWiki.xcdatamodeld */,
 				81A7F11B2C32F35600211625 /* App */,
 				81A7F1242C32F35600211625 /* Assets */,
 				81A7F12E2C32F35600211625 /* Models */,
@@ -452,7 +453,6 @@
 				81A7F1302C32F35600211625 /* Preview Content */,
 				81A7F1312C32F35600211625 /* Services */,
 				F6BDD5F42C76591E0083C8EE /* CoreData */,
-				F6BDD5EA2C764F590083C8EE /* MarvelWiki.xcdatamodeld */,
 			);
 			path = MarvelWiki;
 			sourceTree = "<group>";
@@ -590,6 +590,7 @@
 				213CA54E2C47E1ED0010FC4F /* ShimmerEffectBox.swift in Sources */,
 				81007D232C7620CB009FB90B /* LoadingHomeView.swift in Sources */,
 				814D68D72C380F7B003EAC3A /* ResponseModel.swift in Sources */,
+				81D277452C77675400B72398 /* MarvelWiki.xcdatamodeld in Sources */,
 				815DE9C42C34199500690031 /* ComicsView.swift in Sources */,
 				815DE9D02C3425FA00690031 /* TabBarView.swift in Sources */,
 				815DE9CA2C3419C800690031 /* SearchView.swift in Sources */,
@@ -607,7 +608,6 @@
 				815DE9CC2C341A5A00690031 /* Routes.swift in Sources */,
 				817D807B2C3EBB310047E64A /* SearchViewModel.swift in Sources */,
 				81A7F1412C32F35600211625 /* ContentView.swift in Sources */,
-				F6BDD5EC2C764F590083C8EE /* MarvelWiki.xcdatamodeld in Sources */,
 				811934532C358D23000DF3B0 /* ComicBox.swift in Sources */,
 				81A7F13F2C32F35600211625 /* Character.swift in Sources */,
 				7FEED5292C3C0AE4008C69B4 /* CarouselImageTop.swift in Sources */,
@@ -820,14 +820,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		F6BDD5EA2C764F590083C8EE /* MarvelWiki.xcdatamodeld */ = {
+		81D277432C77675400B72398 /* MarvelWiki.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				F6BDD5EB2C764F590083C8EE /* MarvelWiki.xcdatamodel */,
+				81D277442C77675400B72398 /* MarvelWiki.xcdatamodel */,
 			);
-			currentVersion = F6BDD5EB2C764F590083C8EE /* MarvelWiki.xcdatamodel */;
-			name = MarvelWiki.xcdatamodeld;
-			path = /Users/jpvinhas/Desktop/MarvelWiki/MarvelWiki/MarvelWiki.xcdatamodeld;
+			currentVersion = 81D277442C77675400B72398 /* MarvelWiki.xcdatamodel */;
+			path = MarvelWiki.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
