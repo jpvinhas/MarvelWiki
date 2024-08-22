@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "nocomic 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Captura_de_Tela_2024-08-21_às_16.49.59-removebg-preview.png",
+      "filename" : "nocomic.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "nocomic 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
