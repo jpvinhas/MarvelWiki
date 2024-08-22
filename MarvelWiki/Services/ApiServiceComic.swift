@@ -107,11 +107,22 @@ class ApiServiceComic{
         
         var requestHeader = URLRequest(url: url)
         requestHeader.httpMethod = "GET"
+        requestHeader.timeoutInterval = 120 
       
-        URLSession.shared.dataTask(with: requestHeader) { data, _, _ in
-          if let data = data {
-              completion(data)
-          }
-        }.resume()
+        func performRequest(retries: Int) {
+            URLSession.shared.dataTask(with: requestHeader) { data, _, error in
+                if let error = error as NSError?, error.code == NSURLErrorTimedOut || error.code == NSURLErrorNetworkConnectionLost, retries > 0 {
+                    DispatchQueue.global().asyncAfter(deadline: .now() + .seconds(2)) {
+                        performRequest(retries: retries - 1) // Retry after a delay
+                    }
+                } else {
+                    if let data = data {
+                        completion(data)
+                    }
+                }
+            }.resume()
+        }
+
+        performRequest(retries: 3)
     }
 }

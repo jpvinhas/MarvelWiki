@@ -15,7 +15,11 @@ struct FavoritesView: View {
         NavigationStack {
             VStack {
                 if !viewModel.favoriteComics.isEmpty{
-                    ScrollView {
+                    Text("Favorite Comics")
+                        .font(.custom("BentonSans Comp Black", size: 22))
+                        .foregroundStyle(Color.white)
+                        .padding(5)
+                    ScrollView(.vertical,showsIndicators: false){
                         LazyVGrid(columns: viewModel.columns, spacing: 20) {
                             ForEach(viewModel.favoriteComics) { comic in
                                 ComicBox(comic: comic)
@@ -27,7 +31,7 @@ struct FavoritesView: View {
                 }else{
                     Image("noFavoriteComic")
                         .padding(.trailing)
-                    Text("Nenhum Quadrinho Favorito!")
+                    Text("No Favorite Comic!")
                         .font(.custom("BentonSans Comp Black", size: 22))
                         .foregroundStyle(Color.white)
                         .padding(.bottom)

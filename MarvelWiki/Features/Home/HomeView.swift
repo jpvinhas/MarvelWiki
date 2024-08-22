@@ -25,7 +25,7 @@ struct HomeView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 230, height: 62)
-                ScrollView{
+                ScrollView(.vertical,showsIndicators: false){
                     VStack{
                         if !homeViewModel.primaryLinks.isEmpty{
                             ForEach(homeViewModel.primaryLinks){ primaryLink in
@@ -34,6 +34,7 @@ struct HomeView: View {
                                 }
                                 if primaryLink.title == "Comics"{
                                     CarouselElementsHome(primaryLink: primaryLink, withBaseUrl: false, withTitles: false)
+                                        .padding(.top,-5)
                                 }
                                 if primaryLink.title == "Characters"{
                                     CarouselElementsHome(primaryLink: primaryLink, withBaseUrl: true, withTitles: true)
@@ -47,7 +48,7 @@ struct HomeView: View {
                     }
                 }
             }
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity,maxHeight: .infinity)
             .background(Color("mBackground"))
         }
     }

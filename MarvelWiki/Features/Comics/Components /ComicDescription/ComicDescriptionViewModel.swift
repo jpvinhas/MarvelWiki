@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-
+ 
 class ComicsDescriptionViewModel: ObservableObject {
     
     private let apiService = ApiServiceComic.singleton
@@ -60,7 +60,7 @@ class ComicsDescriptionViewModel: ObservableObject {
     func toggleFavorite() {
         let favorites = FavoritesViewModel.shared
         
-        if let index = favorites.favoriteComics.firstIndex(of: comic) {
+        if favorites.favoriteComics.firstIndex(of: comic) != nil {
             favorites.deleteComic(comic)
             isFavorite = false
         } else {

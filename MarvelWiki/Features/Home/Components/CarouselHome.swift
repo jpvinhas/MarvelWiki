@@ -18,7 +18,7 @@ struct CarouselHome: View{
         
             Text(primaryLink.title)
                 .font(.custom("BentonSans Comp Black", size: 28))
-                .padding(.top)
+                .padding(.top,5)
                 .padding(.leading, 30)
                 .foregroundStyle(Color(.white))
             ScrollView(.horizontal, showsIndicators: false){
@@ -52,7 +52,7 @@ struct CarouselHome: View{
             }
             .scrollPosition(id: $scrollID)
             .scrollTargetBehavior(.paging)
-            .frame(height: 215)
+            .frame(height: 210)
             
         }
         VStack{

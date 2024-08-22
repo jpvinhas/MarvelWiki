@@ -16,7 +16,7 @@ struct CharactersList: View {
     var body: some View {
         NavigationView {
             VStack {
-                ScrollView {
+                ScrollView(.vertical,showsIndicators: false){
                     LazyVGrid(columns: viewModel.columns, spacing: 20) {
                         ForEach(viewModel.getFilteredCharacters()) { character in
                             VStack {
