@@ -26,7 +26,7 @@ Permite aos usuários encontrar quadrinhos e personagens com facilidade.
 
 ### 2. Favoritos
 Salve seus quadrinhos preferidos para acesso rápido e offline.
-![Favoritos]()
+![Favoritos](https://raw.githubusercontent.com/jpvinhas/MarvelWiki/main/ReadmeAssets/Grava%C3%A7%C3%A3o%20de%20Tela%202024-09-03%20%C3%A0s%2008.57.23%20(6).gif)
 
 ### 3. Notícias em Tempo Real
 Acesse notícias reais do site oficial da Marvel.
