@@ -21,23 +21,18 @@ O Marvel Wiki oferece uma experiência completa para os fãs de quadrinhos Marve
 ## 📱 Funcionalidades
 
 ### 1. Pesquisa Avançada
-Permite aos usuários encontrar quadrinhos e personagens com facilidade.
 ![Pesquisa Avançada](https://raw.githubusercontent.com/jpvinhas/MarvelWiki/main/ReadmeAssets/Grava%C3%A7%C3%A3o%20de%20Tela%202024-09-03%20%C3%A0s%2008.57.23%20(3).gif)
 
 ### 2. Favoritos
-Salve seus quadrinhos preferidos para acesso rápido e offline.
 ![Favoritos](https://raw.githubusercontent.com/jpvinhas/MarvelWiki/main/ReadmeAssets/Grava%C3%A7%C3%A3o%20de%20Tela%202024-09-03%20%C3%A0s%2008.57.23%20(6).gif)
 
 ### 3. Notícias em Tempo Real
-Acesse notícias reais do site oficial da Marvel.
 ![Notícias em Tempo Real](https://github.com/jpvinhas/MarvelWiki/blob/main/ReadmeAssets/Grava%C3%A7%C3%A3o%20de%20Tela%202024-09-03%20%C3%A0s%2008.57.23%20(1).gif)
 
 ### 4. Informações Detalhadas sobre Quadrinhos e Personagens
-Explore histórias, personagens e arcos detalhados.
 ![Informações Detalhadas](https://raw.githubusercontent.com/jpvinhas/MarvelWiki/main/ReadmeAssets/Grava%C3%A7%C3%A3o%20de%20Tela%202024-09-03%20%C3%A0s%2008.57.23%20(5).gif)
 
 ### 5. Web Views Integradas
-Veja mais informações diretamente do site da Marvel através de web views.
 ![Web Views Integradas](https://raw.githubusercontent.com/jpvinhas/MarvelWiki/main/ReadmeAssets/Grava%C3%A7%C3%A3o%20de%20Tela%202024-09-03%20%C3%A0s%2008.57.23%20(2).gif)
 
 ## 🚀 Como Instalar
